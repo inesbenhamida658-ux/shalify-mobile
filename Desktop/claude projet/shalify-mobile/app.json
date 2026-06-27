@@ -3,10 +3,13 @@
     "name": "Shalify",
     "slug": "shalify-mobile",
     "version": "1.0.0",
+    "sdkVersion": "52.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
       "backgroundColor": "#FAF7F2"
     },
     "scheme": "shalify",
@@ -16,16 +19,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#0F1F17",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0F1F17"
       },
-      "predictiveBackGestureEnabled": false,
       "package": "app.shalify.mobile"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "extra": {
       "apiBaseUrl": "https://shalify.app"

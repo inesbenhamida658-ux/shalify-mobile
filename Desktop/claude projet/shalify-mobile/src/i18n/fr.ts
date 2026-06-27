@@ -59,12 +59,17 @@ export const fr = {
   creator_bio: 'À propos',
   creator_avis: 'Avis',
   creator_verified: 'Profil vérifié',
+  creator_verifie: 'Profil vérifié',
+  creator_reserver: 'Réserver une séance',
 
   // Messages
   messages_titre: 'Messages',
   messages_vide: 'Aucune conversation pour l\'instant',
   messages_ph: 'Écrire un message...',
   messages_envoyer: 'Envoyer',
+  messages_login: 'Connecte-toi pour accéder aux messages',
+  messages_login_desc: 'Crée ton compte gratuitement pour contacter les créateurs',
+  messages_mvp_notice: 'Messagerie en cours de déploiement — les échanges restent sur cet appareil',
 
   // Profil
   profile_titre: 'Mon profil',
@@ -73,20 +78,27 @@ export const fr = {
   profile_devise: 'Devise',
   profile_non_connecte: 'Tu n\'es pas connecté',
   profile_connexion: 'Se connecter',
+  profil_titre: 'Mon profil',
+  profil_deconnexion: 'Se déconnecter',
+  profil_deconnexion_confirm: 'Es-tu sûr de vouloir te déconnecter ?',
+  profil_non_connecte: 'Tu n\'es pas connecté',
 
   // Paramètres
   settings_titre: 'Paramètres',
   settings_langue: 'Langue',
   settings_devise: 'Devise',
+  settings_devise_notice: 'Taux indicatifs uniquement. Les paiements se font en TND via l\'équipe Shalify.',
   settings_notifications: 'Notifications',
   settings_confidentialite: 'Confidentialité',
   settings_cgu: 'Conditions générales',
+  settings_a_propos: 'À propos',
 
   // Favoris
   favoris_ajouter: 'Ajouter aux favoris',
   favoris_retirer: 'Retirer des favoris',
   favoris_titre: 'Mes favoris',
   favoris_vide: 'Aucun favori pour l\'instant',
+  favoris_vide_desc: 'Explore les créateurs et ajoute ceux qui t\'inspirent',
 
   // Panier / Réservation
   panier_titre: 'Mon panier',

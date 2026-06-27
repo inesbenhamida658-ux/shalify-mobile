@@ -1,4 +1,3 @@
-'use client';
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getStoredToken, getMe, logout as authLogout, storeToken } from '../services/auth';
 import type { User } from '../types';
