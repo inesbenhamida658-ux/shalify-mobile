@@ -112,4 +112,8 @@ export const en = {
   booking_confirme_titre: 'Booking saved',
   booking_confirme_msg: 'Complete the payment on the Ziina page. Shalify confirms your session once received.',
   booking_login_requis: 'Sign in to book.',
+
+  // Home sections
+  home_section_formations: 'Courses',
+  home_section_lives: 'Upcoming lives',
 };

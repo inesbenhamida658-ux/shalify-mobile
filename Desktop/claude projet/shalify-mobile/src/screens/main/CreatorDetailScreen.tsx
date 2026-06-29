@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ScreenContainer, AppText, AppCard, LoadingState, ErrorState, CheckoutButton } from '../../components';
+import { ScreenContainer, AppText, AppCard, LoadingState, ErrorState, CheckoutButton, FavoriteButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
@@ -9,6 +9,7 @@ import type { Creator } from '../../types';
 
 const styles = StyleSheet.create({
   header: { backgroundColor: Colors.vertTF, borderRadius: Radius.lg, padding: Spacing.lg, marginBottom: Spacing.lg },
+  headerRow: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
   badge: { backgroundColor: Colors.or, paddingHorizontal: Spacing.sm, paddingVertical: 2, borderRadius: 4, alignSelf: 'flex-start', marginTop: Spacing.xs },
   serviceCard: { marginBottom: Spacing.sm },
   paymentNotice: {
@@ -43,8 +44,13 @@ export function CreatorDetailScreen({ route, navigation }: any) {
   return (
     <ScreenContainer>
       <View style={styles.header}>
-        <AppText variant="h2" color="white">{creator.prenom} {creator.nom}</AppText>
-        <AppText variant="bodySmall" color="white" style={{ opacity: 0.7, marginTop: 2 }}>{creator.rubrique}</AppText>
+        <View style={styles.headerRow}>
+          <View style={{ flex: 1 }}>
+            <AppText variant="h2" color="white">{creator.prenom} {creator.nom}</AppText>
+            <AppText variant="bodySmall" color="white" style={{ opacity: 0.7, marginTop: 2 }}>{creator.rubrique}</AppText>
+          </View>
+          <FavoriteButton creatorId={creator.id} />
+        </View>
         {creator.verified && (
           <View style={styles.badge}>
             <AppText variant="caption" color="white">✓ {t('creator_verifie')}</AppText>

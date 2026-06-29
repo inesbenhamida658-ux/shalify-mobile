@@ -112,4 +112,8 @@ export const ar = {
   booking_confirme_titre: 'تم حفظ الحجز',
   booking_confirme_msg: 'أكمل الدفع على صفحة Ziina. تؤكّد Shalify جلستك فور الاستلام.',
   booking_login_requis: 'سجّل الدخول للحجز.',
+
+  // أقسام الرئيسية
+  home_section_formations: 'الدورات',
+  home_section_lives: 'البث المباشر القادم',
 };

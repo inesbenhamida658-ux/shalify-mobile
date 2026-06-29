@@ -127,4 +127,8 @@ export const fr = {
   booking_confirme_titre: 'Réservation enregistrée',
   booking_confirme_msg: 'Finalise le paiement sur la page Ziina. Shalify confirme ta séance dès réception.',
   booking_login_requis: 'Connecte-toi pour réserver.',
+
+  // Sections accueil
+  home_section_formations: 'Formations',
+  home_section_lives: 'Lives à venir',
 };
