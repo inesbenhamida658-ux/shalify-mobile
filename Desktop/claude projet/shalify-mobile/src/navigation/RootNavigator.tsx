@@ -6,9 +6,15 @@ import { AuthStack } from './AuthStack';
 import { MainTabs } from './MainTabs';
 import { LoadingState } from '../components';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Main: undefined;
+  Auth: undefined;
+};
 
-const linking = {
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const linking: any = {
   prefixes: ['shalify://'],
   config: {
     screens: {
