@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ScreenContainer, AppText, AppCard, AppButton, LoadingState, ErrorState } from '../../components';
+import { ScreenContainer, AppText, AppCard, LoadingState, ErrorState, CheckoutButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
@@ -69,16 +69,11 @@ export function CreatorDetailScreen({ route, navigation }: any) {
                 {s.prix && <AppText variant="label" color="or">{s.prix} {s.devise ?? 'EUR'}</AppText>}
               </View>
               {s.description && <AppText variant="bodySmall" color="secondary" style={{ marginTop: Spacing.xs }}>{s.description}</AppText>}
-              <AppButton
-                label={t('creator_reserver')}
-                onPress={() => {}}
-                variant="outline"
-                style={{ marginTop: Spacing.md }}
-              />
+              <CheckoutButton creator={creator} service={s} style={{ marginTop: Spacing.md }} />
             </AppCard>
           ))}
           <View style={styles.paymentNotice}>
-            <AppText variant="caption" color="secondary">Paiement manuel / test — aucun débit réel.</AppText>
+            <AppText variant="caption" color="secondary">{t('booking_paiement_info')}</AppText>
           </View>
         </>
       )}

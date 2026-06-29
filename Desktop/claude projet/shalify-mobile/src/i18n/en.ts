@@ -105,4 +105,11 @@ export const en = {
   confirmer: 'Confirm',
   chargement: 'Loading...',
   demo_badge: 'DEMO',
+
+  // Booking + Ziina payment
+  booking_payer_ziina: 'Book and pay',
+  booking_paiement_info: 'Secure payment via Ziina. Your booking is saved, Shalify confirms once received.',
+  booking_confirme_titre: 'Booking saved',
+  booking_confirme_msg: 'Complete the payment on the Ziina page. Shalify confirms your session once received.',
+  booking_login_requis: 'Sign in to book.',
 };

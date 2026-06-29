@@ -105,4 +105,11 @@ export const ar = {
   confirmer: 'تأكيد',
   chargement: 'جاري التحميل...',
   demo_badge: 'تجريبي',
+
+  // الحجز والدفع عبر Ziina
+  booking_payer_ziina: 'احجز وادفع',
+  booking_paiement_info: 'دفع آمن عبر Ziina. تم حفظ حجزك، وتؤكّده Shalify فور الاستلام.',
+  booking_confirme_titre: 'تم حفظ الحجز',
+  booking_confirme_msg: 'أكمل الدفع على صفحة Ziina. تؤكّد Shalify جلستك فور الاستلام.',
+  booking_login_requis: 'سجّل الدخول للحجز.',
 };

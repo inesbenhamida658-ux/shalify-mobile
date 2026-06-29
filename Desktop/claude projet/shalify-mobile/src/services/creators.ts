@@ -15,6 +15,7 @@ interface RawProfil {
   id: string;
   prenom: string;
   nom: string;
+  email?: string;
   bio?: string;
   specialite?: string;
   rubrique: string;
@@ -55,6 +56,7 @@ function mapProfil(raw: RawProfil): Creator {
     id: raw.id,
     prenom: raw.prenom,
     nom: raw.nom,
+    email: raw.email,
     bio: raw.bio,
     photoUrl: raw.photoUrl,
     avatar: raw.photoUrl,

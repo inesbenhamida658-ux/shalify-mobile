@@ -120,4 +120,11 @@ export const fr = {
   confirmer: 'Confirmer',
   chargement: 'Chargement...',
   demo_badge: 'DÉMO',
+
+  // Réservation + paiement Ziina
+  booking_payer_ziina: 'Réserver et payer',
+  booking_paiement_info: 'Paiement sécurisé via Ziina. Ta réservation est enregistrée, Shalify confirme dès réception.',
+  booking_confirme_titre: 'Réservation enregistrée',
+  booking_confirme_msg: 'Finalise le paiement sur la page Ziina. Shalify confirme ta séance dès réception.',
+  booking_login_requis: 'Connecte-toi pour réserver.',
 };

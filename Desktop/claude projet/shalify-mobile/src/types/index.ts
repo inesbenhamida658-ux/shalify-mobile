@@ -17,6 +17,7 @@ export interface Creator {
   id: string;
   prenom: string;
   nom: string;
+  email?: string;
   bio?: string;
   avatar?: string;
   photoUrl?: string;
