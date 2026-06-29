@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { ScreenContainer, AppText, AppCard, AppButton, LoadingState } from '../../components';
 import { Colors, Spacing } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 import { getCreators } from '../../services/creators';
 import type { Creator } from '../../types';
+import type { MainTabParamList } from '../../navigation/MainTabs';
 
 const styles = StyleSheet.create({
   header: { paddingTop: Spacing.lg, paddingBottom: Spacing.xl, borderBottomWidth: 1, borderBottomColor: Colors.bordure, marginBottom: Spacing.lg },
@@ -36,6 +39,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
 export function HomeScreen() {
   const { t } = useLang();
   const { token } = useAuth();
+  const navigation = useNavigation<BottomTabNavigationProp<MainTabParamList>>();
   const [creators, setCreators] = useState<Creator[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -55,7 +59,7 @@ export function HomeScreen() {
 
       <View style={styles.sectionRow}>
         <AppText variant="h3">{t('home_section_createurs')}</AppText>
-        <AppButton label={t('home_voir_tout')} onPress={() => {}} variant="ghost" style={{ padding: 0 }} />
+        <AppButton label={t('home_voir_tout')} onPress={() => navigation.navigate('CreateursTab')} variant="ghost" style={{ padding: 0 }} />
       </View>
 
       {creators.map(c => <CreatorCard key={c.id} creator={c} />)}
