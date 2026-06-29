@@ -23,6 +23,9 @@ export function SearchScreen() {
       const res = await searchCreators(q, token ?? undefined);
       setResults(res);
       setSearched(true);
+    } catch {
+      setResults([]);
+      setSearched(true);
     } finally { setLoading(false); }
   };
 

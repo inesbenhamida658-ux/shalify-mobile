@@ -21,14 +21,42 @@ export async function requestOTP(email: string): Promise<{ success: boolean }> {
   return apiPost('/api/auth/login', { email });
 }
 
+// Réponse réelle du site pour /api/auth/verify et /api/auth/login-password
+interface AuthResponse {
+  success?: boolean;
+  token: string;
+  role?: 'createur' | 'client' | 'admin';
+  nom?: string;
+  profilId?: string;
+  user?: Partial<User>;
+}
+
+// Construit un User mobile à partir de la réponse du site (qui renvoie role/nom/profilId)
+function buildUser(email: string, res: AuthResponse): User {
+  if (res.user && res.user.email) return res.user as User;
+  const fullName = (res.nom ?? '').trim();
+  const [prenom, ...rest] = fullName.split(/\s+/).filter(Boolean);
+  const role: User['role'] = res.role === 'createur' ? 'createur' : res.role === 'admin' ? 'admin' : 'user';
+  return {
+    id: res.profilId ?? email,
+    email,
+    prenom: prenom || undefined,
+    nom: rest.length ? rest.join(' ') : undefined,
+    role,
+    createdAt: new Date().toISOString(),
+  };
+}
+
 // Étape 2 : vérifier l'OTP et récupérer le token de session
 export async function verifyOTP(email: string, code: string): Promise<{ token: string; user: User }> {
-  return apiPost('/api/auth/verify', { email, code });
+  const res = await apiPost<AuthResponse>('/api/auth/verify', { email, code });
+  return { token: res.token, user: buildUser(email, res) };
 }
 
 // Login par mot de passe (si activé)
 export async function loginWithPassword(email: string, password: string): Promise<{ token: string; user: User }> {
-  return apiPost('/api/auth/login-password', { email, password });
+  const res = await apiPost<AuthResponse>('/api/auth/login-password', { email, password });
+  return { token: res.token, user: buildUser(email, res) };
 }
 
 // Récupérer l'utilisateur courant

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { ScreenContainer, AppText, AppCard, AppButton, LoadingState } from '../../components';
+import { ScreenContainer, AppText, AppCard, AppButton, LoadingState, ErrorState } from '../../components';
 import { Colors, Spacing } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
@@ -42,12 +42,20 @@ export function HomeScreen() {
   const navigation = useNavigation<BottomTabNavigationProp<MainTabParamList>>();
   const [creators, setCreators] = useState<Creator[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    getCreators(token ?? undefined).then(list => { setCreators(list.slice(0, 3)); setLoading(false); });
-  }, [token]);
+  const load = () => {
+    setLoading(true); setError('');
+    getCreators(token ?? undefined)
+      .then(list => setCreators(list.slice(0, 3)))
+      .catch(() => setError(t('erreur_reseau')))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => { load(); }, [token]);
 
   if (loading) return <LoadingState message={t('chargement')} />;
+  if (error) return <ErrorState message={error} onRetry={load} />;
 
   return (
     <ScreenContainer>

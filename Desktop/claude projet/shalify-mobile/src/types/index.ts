@@ -19,6 +19,8 @@ export interface Creator {
   nom: string;
   bio?: string;
   avatar?: string;
+  photoUrl?: string;
+  specialite?: string;
   rubrique: string;
   tags: string[];
   tarif?: number;
@@ -40,6 +42,43 @@ export interface Service {
   tarif?: number;
   devise?: string;
   type: 'seance' | 'formation' | 'live' | 'ressource';
+  // Lien de paiement fourni par le créateur (Konnect / manuel) — défini côté site
+  lienPaiement?: string;
+}
+
+// Formation — correspond à GET /api/formations du site
+export interface Formation {
+  id: string;
+  titre: string;
+  description: string;
+  createurPrenom: string;
+  createurNom: string;
+  rubrique: string;
+  prix: number;
+  devise: string;
+  dureeTotal: string;
+  niveauRequis: string;
+  photoUrl?: string;
+  ventes: number;
+}
+
+// Live — correspond à GET /api/lives du site (données sanitizées)
+export interface Live {
+  id: string;
+  titre: string;
+  description: string;
+  createurPrenom: string;
+  createurNom: string;
+  rubrique: string;
+  date: string;
+  heure: string;
+  dureeMinutes: number;
+  prix: number;
+  devise: string;
+  placesTotal: number;
+  placesReservees: number;
+  statut: 'a_venir' | 'en_cours' | 'termine' | 'annule';
+  photoUrl?: string;
 }
 
 export interface Message {
