@@ -24,8 +24,11 @@ export function ScreenContainer({ children, scrollable = true, style, onRefresh,
   const handleRefresh = async () => {
     if (!onRefresh) return;
     setRefreshing(true);
-    await onRefresh();
-    setRefreshing(false);
+    try {
+      await onRefresh();
+    } finally {
+      setRefreshing(false);
+    }
   };
 
   const ph = paddingHorizontal !== undefined ? { paddingHorizontal } : {};

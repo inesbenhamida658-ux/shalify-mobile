@@ -25,8 +25,13 @@ export function FavoritesScreen() {
     setLoading(true);
     try {
       const ids = await getFavorites();
-      const resolved = await Promise.all(ids.map(id => getCreatorById(id, token ?? undefined)));
-      setCreators(resolved.filter((c): c is Creator => !!c));
+      // allSettled : un créateur qui échoue à charger ne casse plus tout l'écran
+      const settled = await Promise.allSettled(ids.map(id => getCreatorById(id, token ?? undefined)));
+      const ok = settled
+        .filter((r): r is PromiseFulfilledResult<Creator | null> => r.status === 'fulfilled')
+        .map(r => r.value)
+        .filter((c): c is Creator => !!c);
+      setCreators(ok);
     } finally { setLoading(false); }
   }, [token]);
 

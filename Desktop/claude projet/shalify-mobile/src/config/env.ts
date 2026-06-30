@@ -7,7 +7,7 @@ export const ENV = {
   IS_DEV: __DEV__,
   // Paiement — architecture neutre, fournisseur prioritaire Ziina (compte Dubaï d'Inès)
   PAYMENT_PROVIDER: (process.env.EXPO_PUBLIC_PAYMENT_PROVIDER ?? 'ziina') as 'ziina' | 'none',
-  ZIINA_PAYMENT_URL: process.env.EXPO_PUBLIC_ZIINA_PAYMENT_URL ?? 'https://pay.ziina.com/shalify',
+  ZIINA_PAYMENT_URL: process.env.EXPO_PUBLIC_ZIINA_PAYMENT_URL ?? 'https://pay.ziina.com/Shalify',
 } as const;
 
 // Validation au démarrage
