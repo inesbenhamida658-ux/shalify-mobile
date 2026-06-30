@@ -121,6 +121,7 @@ export const en = {
   signaler_raison_arnaque: 'Possible scam',
   signaler_envoye: 'Thank you, your report has been sent.',
   partage_message: 'Discover this creator on Shalify',
+  creator_introuvable: 'Creator not found',
 
   // Home sections
   home_section_formations: 'Courses',

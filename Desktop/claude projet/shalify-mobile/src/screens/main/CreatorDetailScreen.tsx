@@ -54,13 +54,13 @@ export function CreatorDetailScreen({ route, navigation }: any) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!creatorId) { setError('Créateur introuvable'); setLoading(false); return; }
+    if (!creatorId) { setError(t('creator_introuvable')); setLoading(false); return; }
     // Avis = best-effort, ne bloque jamais l'affichage de la fiche
     getAvisForProfil(creatorId, token ?? undefined)
       .then(r => { setAvis(r.avis); setMoyenne(r.moyenne); setTotalAvis(r.total); })
       .catch(() => { setAvis([]); setMoyenne(0); setTotalAvis(0); });
     getCreatorById(creatorId, token ?? undefined)
-      .then(c => { setCreator(c ?? null); if (!c) setError('Créateur introuvable'); })
+      .then(c => { setCreator(c ?? null); if (!c) setError(t('creator_introuvable')); })
       .catch(() => setError(t('erreur_reseau')))
       .finally(() => setLoading(false));
   }, [creatorId, token]);

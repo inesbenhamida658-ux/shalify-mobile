@@ -8,7 +8,7 @@ export const ar = {
   login_titre: 'مرحباً بك في شاليفاي',
   login_sous_titre: 'سجّل الدخول للوصول إلى مساحتك',
   login_email: 'البريد الإلكتروني',
-  login_email_ph: 'بريدك@إلكتروني.com',
+  login_email_ph: 'nom@email.com',
   login_cta: 'احصل على الرمز',
   login_otp_titre: 'تحقق من بريدك',
   login_otp_sous_titre: 'أدخل الرمز الذي أرسلناه إليك',
@@ -31,7 +31,7 @@ export const ar = {
   forgot_retour: 'رجوع',
   forgot_succes: 'تم إرسال الرابط. تحقق من صندوق الوارد.',
 
-  home_titre: 'heal · learn · love · create',
+  home_titre: 'Heal · Learn · Love · Create',
   home_sous_titre: 'اكتشف مبدعين يتوافقون مع قيمك',
   home_section_createurs: 'مبدعون للاكتشاف',
   home_section_ressources: 'موارد اللحظة',
@@ -121,6 +121,7 @@ export const ar = {
   signaler_raison_arnaque: 'اشتباه باحتيال',
   signaler_envoye: 'شكراً، تم إرسال بلاغك.',
   partage_message: 'اكتشف هذا المبدع على Shalify',
+  creator_introuvable: 'المبدع غير موجود',
 
   // أقسام الرئيسية
   home_section_formations: 'الدورات',

@@ -136,6 +136,7 @@ export const fr = {
   signaler_raison_arnaque: 'Suspicion d\'arnaque',
   signaler_envoye: 'Merci, ton signalement a été envoyé.',
   partage_message: 'Découvre ce créateur sur Shalify',
+  creator_introuvable: 'Créateur introuvable',
 
   // Sections accueil
   home_section_formations: 'Formations',
