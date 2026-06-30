@@ -3,7 +3,7 @@
     "name": "Shalify",
     "slug": "shalify-mobile",
     "version": "1.0.0",
-    "sdkVersion": "52.0.0",
+    "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -29,7 +29,10 @@
       "bundler": "metro"
     },
     "extra": {
-      "apiBaseUrl": "https://shalify.app"
+      "apiBaseUrl": "https://shalify.app",
+      "eas": {
+        "projectId": "cad894e2-41fe-44ff-9f4b-fa381432eebc"
+      }
     }
   }
 }
