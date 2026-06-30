@@ -30,6 +30,9 @@ export function CheckoutButton({ creator, service, style, label }: Props) {
       const res = await startCheckout({ creator, service, user, token: token ?? undefined });
       if (res.paiementOuvert) {
         Alert.alert(t('booking_confirme_titre'), t('booking_confirme_msg'));
+      } else if (res.reservationEnregistree) {
+        // Réservation OK mais le lien Ziina n'a pas pu s'ouvrir : on guide le client
+        Alert.alert(t('booking_confirme_titre'), t('booking_lien_manuel'));
       } else {
         Alert.alert(t('erreur_generique'));
       }

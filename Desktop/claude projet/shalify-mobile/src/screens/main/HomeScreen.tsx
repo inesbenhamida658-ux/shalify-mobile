@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { ScreenContainer, AppText, AppCard, AppButton, LoadingState, ErrorState } from '../../components';
-import { Colors, Spacing } from '../../theme';
+import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 import { getCreators } from '../../services/creators';
@@ -18,15 +18,18 @@ const styles = StyleSheet.create({
   card: { marginBottom: Spacing.md },
   badge: { backgroundColor: Colors.vert, paddingHorizontal: Spacing.sm, paddingVertical: 2, borderRadius: 4 },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  cardPhoto: { width: '100%', height: 150, borderRadius: Radius.md, marginBottom: Spacing.sm, backgroundColor: Colors.cremeF },
 });
 
 function CreatorCard({ creator, onPress }: { creator: Creator; onPress?: () => void }) {
   return (
     <AppCard style={styles.card} onPress={onPress}>
+      {creator.photoUrl ? <Image source={{ uri: creator.photoUrl }} style={styles.cardPhoto} resizeMode="cover" /> : null}
       <View style={styles.cardTop}>
         <View style={{ flex: 1 }}>
           <AppText variant="h3">{creator.prenom} {creator.nom}</AppText>
           <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>{creator.rubrique}</AppText>
+          {creator.specialite ? <AppText variant="caption" color="or" style={{ marginTop: 2 }}>{creator.specialite}</AppText> : null}
         </View>
         {creator.verified && (
           <View style={styles.badge}><AppText variant="caption" color="white">✓</AppText></View>

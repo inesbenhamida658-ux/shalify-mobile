@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { ScreenContainer, AppText, AppCard, LoadingState, EmptyState, ErrorState } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     marginRight: Spacing.sm,
   },
   chipActive: { borderColor: Colors.vert, backgroundColor: Colors.vert },
+  cardPhoto: { width: '100%', height: 150, borderRadius: Radius.md, marginBottom: Spacing.sm, backgroundColor: Colors.cremeF },
 });
 
 export function CreatorsScreen({ navigation }: any) {
@@ -65,8 +66,10 @@ export function CreatorsScreen({ navigation }: any) {
       {!loading && error === '' && creators.length === 0 && <EmptyState titre={t('creators_vide')} />}
       {!loading && error === '' && creators.map(c => (
         <AppCard key={c.id} style={{ marginBottom: Spacing.md }} onPress={() => navigation?.navigate?.('CreatorDetail', { creatorId: c.id })}>
+          {c.photoUrl ? <Image source={{ uri: c.photoUrl }} style={styles.cardPhoto} resizeMode="cover" /> : null}
           <AppText variant="h3">{c.prenom} {c.nom}</AppText>
           <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>{c.rubrique}</AppText>
+          {c.specialite ? <AppText variant="caption" color="or" style={{ marginTop: 2 }}>{c.specialite}</AppText> : null}
           {c.bio && <AppText variant="bodySmall" color="secondary" style={{ marginTop: Spacing.sm }} numberOfLines={2}>{c.bio}</AppText>}
           {c.tarif && <AppText variant="label" color="or" style={{ marginTop: Spacing.sm }}>{c.tarif} {c.devise ?? 'TND'}</AppText>}
         </AppCard>

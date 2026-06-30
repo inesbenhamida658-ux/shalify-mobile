@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { ScreenContainer, AppText, AppCard, LoadingState, ErrorState, CheckoutButton, FavoriteButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 import { getCreatorById } from '../../services/creators';
+import { getAvisForProfil, type Avis } from '../../services/avis';
 import type { Creator } from '../../types';
 
 const styles = StyleSheet.create({
+  photo: { width: '100%', height: 240, borderRadius: Radius.lg, marginBottom: Spacing.md, backgroundColor: Colors.cremeF },
   header: { backgroundColor: Colors.vertTF, borderRadius: Radius.lg, padding: Spacing.lg, marginBottom: Spacing.lg },
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
   badge: { backgroundColor: Colors.or, paddingHorizontal: Spacing.sm, paddingVertical: 2, borderRadius: 4, alignSelf: 'flex-start', marginTop: Spacing.xs },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', marginTop: Spacing.sm },
   serviceCard: { marginBottom: Spacing.sm },
+  serviceMetaRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, marginTop: Spacing.xs, flexWrap: 'wrap' },
+  typeBadge: { backgroundColor: Colors.cremeF, paddingHorizontal: Spacing.sm, paddingVertical: 2, borderRadius: Radius.full },
+  avisCard: { marginBottom: Spacing.sm },
   paymentNotice: {
     backgroundColor: Colors.cremeF,
     borderRadius: Radius.md,
@@ -22,16 +28,35 @@ const styles = StyleSheet.create({
   },
 });
 
+const TYPE_LABEL: Record<string, string> = {
+  seance: 'Séance',
+  formation: 'Formation',
+  live: 'Live',
+  ressource: 'Ressource',
+};
+
+function Stars({ note }: { note: number }) {
+  const full = Math.round(note);
+  return <AppText variant="label" color="or">{'★'.repeat(full)}{'☆'.repeat(Math.max(0, 5 - full))}</AppText>;
+}
+
 export function CreatorDetailScreen({ route, navigation }: any) {
   const { creatorId } = route.params ?? {};
   const { t } = useLang();
   const { token } = useAuth();
   const [creator, setCreator] = useState<Creator | null>(null);
+  const [avis, setAvis] = useState<Avis[]>([]);
+  const [moyenne, setMoyenne] = useState(0);
+  const [totalAvis, setTotalAvis] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (!creatorId) { setError('Créateur introuvable'); setLoading(false); return; }
+    // Avis = best-effort, ne bloque jamais l'affichage de la fiche
+    getAvisForProfil(creatorId, token ?? undefined)
+      .then(r => { setAvis(r.avis); setMoyenne(r.moyenne); setTotalAvis(r.total); })
+      .catch(() => { setAvis([]); setMoyenne(0); setTotalAvis(0); });
     getCreatorById(creatorId, token ?? undefined)
       .then(c => { setCreator(c ?? null); if (!c) setError('Créateur introuvable'); })
       .catch(() => setError(t('erreur_reseau')))
@@ -43,14 +68,29 @@ export function CreatorDetailScreen({ route, navigation }: any) {
 
   return (
     <ScreenContainer>
+      {creator.photoUrl ? (
+        <Image source={{ uri: creator.photoUrl }} style={styles.photo} resizeMode="cover" />
+      ) : null}
+
       <View style={styles.header}>
         <View style={styles.headerRow}>
           <View style={{ flex: 1 }}>
             <AppText variant="h2" color="white">{creator.prenom} {creator.nom}</AppText>
             <AppText variant="bodySmall" color="white" style={{ opacity: 0.7, marginTop: 2 }}>{creator.rubrique}</AppText>
+            {creator.specialite ? (
+              <AppText variant="bodySmall" color="or" style={{ marginTop: 2 }}>{creator.specialite}</AppText>
+            ) : null}
           </View>
           <FavoriteButton creatorId={creator.id} />
         </View>
+        {totalAvis > 0 ? (
+          <View style={styles.ratingRow}>
+            <Stars note={moyenne} />
+            <AppText variant="bodySmall" color="white" style={{ marginLeft: Spacing.sm, opacity: 0.85 }}>
+              {moyenne} · {totalAvis} {totalAvis > 1 ? 'avis' : 'avis'}
+            </AppText>
+          </View>
+        ) : null}
         {creator.verified && (
           <View style={styles.badge}>
             <AppText variant="caption" color="white">✓ {t('creator_verifie')}</AppText>
@@ -72,7 +112,13 @@ export function CreatorDetailScreen({ route, navigation }: any) {
             <AppCard key={s.id} style={styles.serviceCard}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <AppText variant="label" style={{ flex: 1 }}>{s.nom}</AppText>
-                {s.prix && <AppText variant="label" color="or">{s.prix} {s.devise ?? 'EUR'}</AppText>}
+                {s.prix ? <AppText variant="label" color="or">{s.prix} {s.devise ?? 'TND'}</AppText> : null}
+              </View>
+              <View style={styles.serviceMetaRow}>
+                <View style={styles.typeBadge}>
+                  <AppText variant="caption" color="secondary">{TYPE_LABEL[s.type] ?? s.type}</AppText>
+                </View>
+                {s.duree ? <AppText variant="caption" color="muted">⏱ {s.duree}</AppText> : null}
               </View>
               {s.description && <AppText variant="bodySmall" color="secondary" style={{ marginTop: Spacing.xs }}>{s.description}</AppText>}
               <CheckoutButton creator={creator} service={s} style={{ marginTop: Spacing.md }} />
@@ -81,6 +127,21 @@ export function CreatorDetailScreen({ route, navigation }: any) {
           <View style={styles.paymentNotice}>
             <AppText variant="caption" color="secondary">{t('booking_paiement_info')}</AppText>
           </View>
+        </>
+      )}
+
+      {avis.length > 0 && (
+        <>
+          <AppText variant="h3" style={{ marginTop: Spacing.lg, marginBottom: Spacing.md }}>{t('creator_avis')}</AppText>
+          {avis.slice(0, 5).map(a => (
+            <AppCard key={a.id} style={styles.avisCard}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <AppText variant="label">{a.auteurPrenom}</AppText>
+                <Stars note={a.note} />
+              </View>
+              {a.commentaire ? <AppText variant="bodySmall" color="secondary" style={{ marginTop: Spacing.xs }}>{a.commentaire}</AppText> : null}
+            </AppCard>
+          ))}
         </>
       )}
 
