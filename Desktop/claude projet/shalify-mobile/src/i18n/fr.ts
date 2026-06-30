@@ -68,8 +68,8 @@ export const fr = {
   messages_ph: 'Écrire un message...',
   messages_envoyer: 'Envoyer',
   messages_login: 'Connecte-toi pour accéder aux messages',
-  messages_login_desc: 'Crée ton compte gratuitement pour contacter les créateurs',
-  messages_mvp_notice: 'Messagerie en cours de déploiement — les échanges restent sur cet appareil',
+  messages_login_desc: 'Crée ton compte pour contacter les créateurs et accéder à tous les talents',
+  messages_mvp_notice: 'Messagerie en cours de déploiement. Les échanges restent sur cet appareil.',
 
   // Profil
   profile_titre: 'Mon profil',
@@ -105,7 +105,7 @@ export const fr = {
   panier_vide: 'Ton panier est vide',
   panier_ajouter: 'Ajouter au panier',
   panier_confirmer: 'Confirmer la demande',
-  panier_mention: 'Paiement manuel — aucun débit réel. L\'équipe Shalify te contactera pour finaliser.',
+  panier_mention: 'Paiement manuel. Zéro débit automatique. L\'équipe Shalify te contactera pour finaliser.',
   reservation_succes: 'Demande envoyée. Statut : en attente de validation.',
 
   // Erreurs
