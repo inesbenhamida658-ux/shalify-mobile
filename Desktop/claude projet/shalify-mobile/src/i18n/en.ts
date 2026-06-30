@@ -59,8 +59,8 @@ export const en = {
   messages_ph: 'Write a message...',
   messages_envoyer: 'Send',
   messages_login: 'Sign in to access messages',
-  messages_login_desc: 'Create your free account to contact creators',
-  messages_mvp_notice: 'Messaging is being rolled out — conversations are stored on this device',
+  messages_login_desc: 'Create your account to contact creators and access all talents',
+  messages_mvp_notice: 'Messaging is being rolled out. Conversations are stored on this device.',
 
   profile_titre: 'My profile',
   profile_deconnexion: 'Sign out',
@@ -92,7 +92,7 @@ export const en = {
   panier_vide: 'Your cart is empty',
   panier_ajouter: 'Add to cart',
   panier_confirmer: 'Confirm request',
-  panier_mention: 'Manual payment — no real charge. The Shalify team will contact you to finalize.',
+  panier_mention: 'Manual payment. Zero automatic charge. The Shalify team will contact you to finalize.',
   reservation_succes: 'Request sent. Status: pending validation.',
 
   erreur_generique: 'Something went wrong. Please try again.',
