@@ -24,6 +24,7 @@ export const ar = {
   signup_email: 'البريد الإلكتروني',
   signup_cta: 'إنشاء مساحتي',
   signup_connexion: 'تسجيل الدخول',
+  signup_prenom_ph: 'اسمك الأول',
 
   forgot_titre: 'نسيت كلمة المرور',
   forgot_sous_titre: 'أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين',
@@ -39,11 +40,11 @@ export const ar = {
 
   search_ph: 'ابحث عن مبدع، مهارة...',
   search_vide: 'اكتب شيئاً للبدء',
-  search_aucun: 'لا توجد نتائج لهذا البحث',
+  search_aucun: 'جرّب بحثاً آخر',
 
   creators_titre: 'المبدعون',
   creators_filtrer: 'تصفية',
-  creators_vide: 'لم يُعثر على أي مبدع',
+  creators_vide: 'تعذّر العثور على مبدعين',
   creators_contacter: 'تواصل',
   creators_reserver: 'احجز',
 
@@ -55,7 +56,7 @@ export const ar = {
   creator_reserver: 'احجز جلسة',
 
   messages_titre: 'الرسائل',
-  messages_vide: 'لا توجد محادثات بعد',
+  messages_vide: 'ستظهر محادثاتك هنا',
   messages_ph: 'اكتب رسالة...',
   messages_envoyer: 'إرسال',
   messages_login: 'سجّل الدخول للوصول إلى الرسائل',
@@ -66,12 +67,12 @@ export const ar = {
   profile_deconnexion: 'تسجيل الخروج',
   profile_langue: 'اللغة',
   profile_devise: 'العملة',
-  profile_non_connecte: 'أنت غير مسجل الدخول',
+  profile_non_connecte: 'سجّل الدخول للوصول إلى مساحتك',
   profile_connexion: 'تسجيل الدخول',
   profil_titre: 'ملفي الشخصي',
   profil_deconnexion: 'تسجيل الخروج',
   profil_deconnexion_confirm: 'هل أنت متأكد من تسجيل الخروج؟',
-  profil_non_connecte: 'أنت غير مسجل الدخول',
+  profil_non_connecte: 'سجّل الدخول للوصول إلى مساحتك',
 
   settings_titre: 'الإعدادات',
   settings_langue: 'اللغة',
@@ -85,7 +86,7 @@ export const ar = {
   favoris_ajouter: 'أضف إلى المفضلة',
   favoris_retirer: 'إزالة من المفضلة',
   favoris_titre: 'مفضلتي',
-  favoris_vide: 'لا توجد مفضلات بعد',
+  favoris_vide: 'مفضلتك بانتظارك',
   favoris_vide_desc: 'استكشف المبدعين وأضف من يلهمونك',
 
   panier_titre: 'سلة الطلبات',
@@ -121,7 +122,7 @@ export const ar = {
   signaler_raison_arnaque: 'اشتباه باحتيال',
   signaler_envoye: 'شكراً، تم إرسال بلاغك.',
   partage_message: 'اكتشف هذا المبدع على Shalify',
-  creator_introuvable: 'المبدع غير موجود',
+  creator_introuvable: 'تعذّر العثور على المبدع',
 
   // أقسام الرئيسية
   home_section_formations: 'الدورات',

@@ -27,6 +27,7 @@ export const fr = {
   signup_email: 'Email',
   signup_cta: 'Créer mon espace',
   signup_connexion: 'Se connecter',
+  signup_prenom_ph: 'Ton prénom',
 
   // Mot de passe oublié
   forgot_titre: 'Mot de passe oublié',
@@ -64,7 +65,7 @@ export const fr = {
 
   // Messages
   messages_titre: 'Messages',
-  messages_vide: 'Aucune conversation pour l\'instant',
+  messages_vide: 'Tes conversations apparaîtront ici',
   messages_ph: 'Écrire un message...',
   messages_envoyer: 'Envoyer',
   messages_login: 'Connecte-toi pour accéder aux messages',
@@ -76,12 +77,12 @@ export const fr = {
   profile_deconnexion: 'Se déconnecter',
   profile_langue: 'Langue',
   profile_devise: 'Devise',
-  profile_non_connecte: 'Tu n\'es pas connecté',
+  profile_non_connecte: 'Connecte-toi pour accéder à ton espace',
   profile_connexion: 'Se connecter',
   profil_titre: 'Mon profil',
   profil_deconnexion: 'Se déconnecter',
   profil_deconnexion_confirm: 'Es-tu sûr de vouloir te déconnecter ?',
-  profil_non_connecte: 'Tu n\'es pas connecté',
+  profil_non_connecte: 'Connecte-toi pour accéder à ton espace',
 
   // Paramètres
   settings_titre: 'Paramètres',

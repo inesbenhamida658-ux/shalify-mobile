@@ -24,6 +24,7 @@ export const en = {
   signup_email: 'Email',
   signup_cta: 'Create my space',
   signup_connexion: 'Sign in',
+  signup_prenom_ph: 'Your first name',
 
   forgot_titre: 'Forgot password',
   forgot_sous_titre: 'Enter your email to receive a reset link',
@@ -39,11 +40,11 @@ export const en = {
 
   search_ph: 'Search a creator, a skill...',
   search_vide: 'Type something to start',
-  search_aucun: 'No results for this search',
+  search_aucun: 'Results unavailable for this search',
 
   creators_titre: 'Creators',
   creators_filtrer: 'Filter',
-  creators_vide: 'No creators found',
+  creators_vide: 'Creators unavailable for now',
   creators_contacter: 'Contact',
   creators_reserver: 'Book',
 
@@ -55,7 +56,7 @@ export const en = {
   creator_reserver: 'Book a session',
 
   messages_titre: 'Messages',
-  messages_vide: 'No conversations yet',
+  messages_vide: 'Your conversations will appear here',
   messages_ph: 'Write a message...',
   messages_envoyer: 'Send',
   messages_login: 'Sign in to access messages',
@@ -66,12 +67,12 @@ export const en = {
   profile_deconnexion: 'Sign out',
   profile_langue: 'Language',
   profile_devise: 'Currency',
-  profile_non_connecte: 'You are not signed in',
+  profile_non_connecte: 'Sign in to access your space',
   profile_connexion: 'Sign in',
   profil_titre: 'My profile',
   profil_deconnexion: 'Sign out',
   profil_deconnexion_confirm: 'Are you sure you want to sign out?',
-  profil_non_connecte: 'You are not signed in',
+  profil_non_connecte: 'Sign in to access your space',
 
   settings_titre: 'Settings',
   settings_langue: 'Language',
@@ -85,7 +86,7 @@ export const en = {
   favoris_ajouter: 'Add to favorites',
   favoris_retirer: 'Remove from favorites',
   favoris_titre: 'My favorites',
-  favoris_vide: 'No favorites yet',
+  favoris_vide: 'Your favorites are waiting',
   favoris_vide_desc: 'Explore creators and add those who inspire you',
 
   panier_titre: 'My cart',
@@ -121,7 +122,7 @@ export const en = {
   signaler_raison_arnaque: 'Possible scam',
   signaler_envoye: 'Thank you, your report has been sent.',
   partage_message: 'Discover this creator on Shalify',
-  creator_introuvable: 'Creator not found',
+  creator_introuvable: 'Creator unavailable',
 
   // Home sections
   home_section_formations: 'Courses',
