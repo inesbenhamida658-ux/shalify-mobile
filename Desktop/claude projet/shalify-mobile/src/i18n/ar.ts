@@ -113,6 +113,14 @@ export const ar = {
   booking_confirme_msg: 'أكمل الدفع على صفحة Ziina. تؤكّد Shalify جلستك فور الاستلام.',
   booking_login_requis: 'سجّل الدخول للحجز.',
   booking_lien_manuel: 'تم حفظ حجزك. افتح صفحة Ziina لإتمام الدفع: pay.ziina.com/Shalify',
+  profil_partager: 'مشاركة',
+  profil_signaler: 'إبلاغ',
+  signaler_titre: 'الإبلاغ عن هذا الملف',
+  signaler_question: 'اختر سبباً',
+  signaler_raison_contenu: 'محتوى غير لائق',
+  signaler_raison_arnaque: 'اشتباه باحتيال',
+  signaler_envoye: 'شكراً، تم إرسال بلاغك.',
+  partage_message: 'اكتشف هذا المبدع على Shalify',
 
   // أقسام الرئيسية
   home_section_formations: 'الدورات',

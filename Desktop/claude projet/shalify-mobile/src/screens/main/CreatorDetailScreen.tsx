@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { ScreenContainer, AppText, AppCard, LoadingState, ErrorState, CheckoutButton, FavoriteButton } from '../../components';
+import { View, StyleSheet, Image, Share, Alert } from 'react-native';
+import { ScreenContainer, AppText, AppCard, AppButton, LoadingState, ErrorState, CheckoutButton, FavoriteButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 import { getCreatorById } from '../../services/creators';
 import { getAvisForProfil, type Avis } from '../../services/avis';
+import { signalerProfil } from '../../services/signalements';
 import type { Creator } from '../../types';
 
 const styles = StyleSheet.create({
   photo: { width: '100%', height: 240, borderRadius: Radius.lg, marginBottom: Spacing.md, backgroundColor: Colors.cremeF },
   header: { backgroundColor: Colors.vertTF, borderRadius: Radius.lg, padding: Spacing.lg, marginBottom: Spacing.lg },
   headerRow: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
+  actionsRow: { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.lg },
   badge: { backgroundColor: Colors.or, paddingHorizontal: Spacing.sm, paddingVertical: 2, borderRadius: 4, alignSelf: 'flex-start', marginTop: Spacing.xs },
   ratingRow: { flexDirection: 'row', alignItems: 'center', marginTop: Spacing.sm },
   serviceCard: { marginBottom: Spacing.sm },
@@ -43,7 +45,7 @@ function Stars({ note }: { note: number }) {
 export function CreatorDetailScreen({ route, navigation }: any) {
   const { creatorId } = route.params ?? {};
   const { t } = useLang();
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [creator, setCreator] = useState<Creator | null>(null);
   const [avis, setAvis] = useState<Avis[]>([]);
   const [moyenne, setMoyenne] = useState(0);
@@ -65,6 +67,22 @@ export function CreatorDetailScreen({ route, navigation }: any) {
 
   if (loading) return <LoadingState />;
   if (error || !creator) return <ErrorState message={error} onRetry={() => navigation.goBack()} retryLabel={t('retour')} />;
+
+  const nomComplet = `${creator.prenom} ${creator.nom}`.trim();
+  const handleShare = () => {
+    Share.share({ message: `${t('partage_message')} : ${nomComplet}\nhttps://shalify.app/profils/${creator.id}` }).catch(() => {});
+  };
+  const doSignal = async (raison: string) => {
+    try { await signalerProfil(creator.id, nomComplet, raison, user?.email); } catch { /* non bloquant */ }
+    Alert.alert(t('signaler_envoye'));
+  };
+  const handleSignaler = () => {
+    Alert.alert(t('signaler_titre'), t('signaler_question'), [
+      { text: t('signaler_raison_contenu'), onPress: () => doSignal(t('signaler_raison_contenu')) },
+      { text: t('signaler_raison_arnaque'), onPress: () => doSignal(t('signaler_raison_arnaque')) },
+      { text: t('annuler'), style: 'cancel' },
+    ]);
+  };
 
   return (
     <ScreenContainer>
@@ -96,6 +114,11 @@ export function CreatorDetailScreen({ route, navigation }: any) {
             <AppText variant="caption" color="white">✓ {t('creator_verifie')}</AppText>
           </View>
         )}
+      </View>
+
+      <View style={styles.actionsRow}>
+        <AppButton label={t('profil_partager')} onPress={handleShare} variant="outline" style={{ flex: 1 }} />
+        <AppButton label={t('profil_signaler')} onPress={handleSignaler} variant="ghost" style={{ flex: 1 }} />
       </View>
 
       {creator.bio && (
