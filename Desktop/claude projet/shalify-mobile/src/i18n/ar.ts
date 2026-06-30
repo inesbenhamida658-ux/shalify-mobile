@@ -59,8 +59,8 @@ export const ar = {
   messages_ph: 'اكتب رسالة...',
   messages_envoyer: 'إرسال',
   messages_login: 'سجّل الدخول للوصول إلى الرسائل',
-  messages_login_desc: 'أنشئ حسابك مجاناً للتواصل مع المبدعين',
-  messages_mvp_notice: 'المراسلة قيد النشر — المحادثات محفوظة على هذا الجهاز',
+  messages_login_desc: 'أنشئ حسابك للتواصل مع المبدعين والوصول إلى كل المواهب',
+  messages_mvp_notice: 'المراسلة قيد النشر. المحادثات محفوظة على هذا الجهاز.',
 
   profile_titre: 'ملفي الشخصي',
   profile_deconnexion: 'تسجيل الخروج',
@@ -92,7 +92,7 @@ export const ar = {
   panier_vide: 'سلتك فارغة',
   panier_ajouter: 'أضف إلى السلة',
   panier_confirmer: 'تأكيد الطلب',
-  panier_mention: 'دفع يدوي — لا خصم حقيقي. سيتواصل معك فريق شاليفاي لإتمام الطلب.',
+  panier_mention: 'دفع يدوي. صفر خصم تلقائي. سيتواصل معك فريق شاليفاي لإتمام الطلب.',
   reservation_succes: 'تم إرسال الطلب. الحالة: في انتظار التأكيد.',
 
   erreur_generique: 'حدث خطأ ما. حاول مجدداً.',
