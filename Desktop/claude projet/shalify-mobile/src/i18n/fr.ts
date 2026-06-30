@@ -45,7 +45,7 @@ export const fr = {
   // Recherche
   search_ph: 'Rechercher un créateur, une compétence...',
   search_vide: 'Tape quelque chose pour commencer',
-  search_aucun: 'Aucun résultat pour cette recherche',
+  search_aucun: 'Résultats introuvables pour cette recherche',
 
   // Créateurs
   creators_titre: 'Créateurs',
