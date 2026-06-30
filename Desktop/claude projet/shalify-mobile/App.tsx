@@ -8,7 +8,7 @@ export default function App() {
   return (
     <LangProvider>
       <AuthProvider>
-        <StatusBar style="dark" backgroundColor="transparent" translucent />
+        <StatusBar style="dark" />
         <RootNavigator />
       </AuthProvider>
     </LangProvider>
