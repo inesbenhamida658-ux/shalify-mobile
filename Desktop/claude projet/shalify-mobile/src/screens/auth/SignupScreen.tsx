@@ -37,8 +37,8 @@ export function SignupScreen({ navigation }: Props) {
       <AppText variant="h2" style={{ marginBottom: Spacing.xs }}>{t('signup_titre')}</AppText>
       <AppText variant="bodySmall" color="secondary" style={{ marginBottom: Spacing.xl }}>{t('signup_sous_titre')}</AppText>
 
-      <AppInput label={t('signup_prenom')} value={prenom} onChangeText={setPrenom} placeholder="Ton prénom" rtl={isRTL} />
-      <AppInput label={t('signup_email')} value={email} onChangeText={setEmail} placeholder="ton@email.com" keyboardType="email-address" error={error} rtl={isRTL} />
+      <AppInput label={t('signup_prenom')} value={prenom} onChangeText={setPrenom} placeholder={t('signup_prenom_ph')} rtl={isRTL} />
+      <AppInput label={t('signup_email')} value={email} onChangeText={setEmail} placeholder={t('login_email_ph')} keyboardType="email-address" error={error} rtl={isRTL} />
 
       <AppButton label={t('signup_cta')} onPress={handleSignup} loading={loading} fullWidth />
       <AppButton label={t('signup_connexion')} onPress={() => navigation.navigate('Login')} variant="ghost" style={{ marginTop: Spacing.sm }} />

@@ -40,7 +40,7 @@ export function ForgotPasswordScreen({ navigation }: Props) {
     <ScreenContainer scrollable>
       <AppText variant="h2" style={{ marginBottom: Spacing.xs }}>{t('forgot_titre')}</AppText>
       <AppText variant="bodySmall" color="secondary" style={{ marginBottom: Spacing.xl }}>{t('forgot_sous_titre')}</AppText>
-      <AppInput label={t('login_email')} value={email} onChangeText={setEmail} placeholder="ton@email.com" keyboardType="email-address" error={error} rtl={isRTL} />
+      <AppInput label={t('login_email')} value={email} onChangeText={setEmail} placeholder={t('login_email_ph')} keyboardType="email-address" error={error} rtl={isRTL} />
       <AppButton label={t('forgot_cta')} onPress={handleSubmit} loading={loading} fullWidth />
       <AppButton label={t('forgot_retour')} onPress={() => navigation.goBack()} variant="ghost" style={{ marginTop: Spacing.sm }} />
     </ScreenContainer>
