@@ -50,7 +50,7 @@ export const fr = {
   // Créateurs
   creators_titre: 'Créateurs',
   creators_filtrer: 'Filtrer',
-  creators_vide: 'Aucun créateur trouvé',
+  creators_vide: 'Créateurs introuvables',
   creators_contacter: 'Contacter',
   creators_reserver: 'Réserver',
 
@@ -97,7 +97,7 @@ export const fr = {
   favoris_ajouter: 'Ajouter aux favoris',
   favoris_retirer: 'Retirer des favoris',
   favoris_titre: 'Mes favoris',
-  favoris_vide: 'Aucun favori pour l\'instant',
+  favoris_vide: 'Tes favoris t\'attendent',
   favoris_vide_desc: 'Explore les créateurs et ajoute ceux qui t\'inspirent',
 
   // Panier / Réservation
