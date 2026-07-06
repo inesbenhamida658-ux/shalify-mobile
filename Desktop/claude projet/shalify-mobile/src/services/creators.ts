@@ -76,7 +76,7 @@ function mapProfil(raw: RawProfil): Creator {
     photoUrl,
     avatar: photoUrl,
     specialite: repairText(raw.specialite),
-    rubrique: raw.rubrique,
+    rubrique: repairText(raw.rubrique),
     tags: raw.specialite ? [repairText(raw.specialite)] : [],
     tarif,
     devise: DEFAULT_DEVISE,

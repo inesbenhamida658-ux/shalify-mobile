@@ -1,4 +1,5 @@
 import { apiGet } from './api';
+import { repairText } from '../utils/repairText';
 
 // Correspond à GET /api/avis du site
 export interface Avis {
@@ -19,7 +20,12 @@ export async function getAvisForProfil(
     `/api/avis?profilId=${encodeURIComponent(profilId)}`,
     token
   );
-  return { avis: data.avis ?? [], moyenne: data.moyenne ?? 0, total: data.total ?? 0 };
+  const avis = (data.avis ?? []).map(a => ({
+    ...a,
+    auteurPrenom: repairText(a.auteurPrenom),
+    commentaire: repairText(a.commentaire),
+  }));
+  return { avis, moyenne: data.moyenne ?? 0, total: data.total ?? 0 };
 }
 
 // Notes moyennes de tous les créateurs — GET /api/avis?summary=1 renvoie { summary: { [id]: {moyenne,total} } }

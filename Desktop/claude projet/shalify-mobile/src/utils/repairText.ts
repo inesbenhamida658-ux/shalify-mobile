@@ -21,5 +21,23 @@ export function repairText(s?: string): string {
     .replace(/premi�re/g, 'première')
     .replace(/D�couverte/g, 'Découverte')
     .replace(/d�couvrir/g, 'découvrir')
-    .replace(/anim�e/g, 'animée');
+    .replace(/anim�e/g, 'animée')
+    // Mots fréquents du contenu Shalify (é/è/à/ê/ç/î perdus).
+    .replace(/cr�ateur/g, 'créateur')
+    .replace(/Cr�ateur/g, 'Créateur')
+    .replace(/cr�atrice/g, 'créatrice')
+    .replace(/cr�ation/g, 'création')
+    .replace(/s�ance/g, 'séance')
+    .replace(/m�ditation/g, 'méditation')
+    .replace(/exp�rience/g, 'expérience')
+    .replace(/th�rapeute/g, 'thérapeute')
+    .replace(/bien-�tre/g, 'bien-être')
+    .replace(/�tre/g, 'être')
+    .replace(/d�veloppe/g, 'développe')
+    .replace(/transmi�/g, 'transmi')
+    .replace(/valid�e/g, 'validée')
+    .replace(/r�serv/g, 'réserv')
+    .replace(/pr�sent/g, 'présent')
+    // Puce médiane cassée entre deux mots (« SHALIFY � Première »).
+    .replace(/ � /g, ' · ');
 }
