@@ -2,6 +2,7 @@
   "expo": {
     "name": "Shalify",
     "slug": "shalify-mobile",
+    "owner": "shalifyapp",
     "version": "1.0.0",
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
@@ -10,12 +11,15 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FAF7F2"
+      "backgroundColor": "#13241A"
     },
     "scheme": "shalify",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.shalify.mobile"
+      "bundleIdentifier": "app.shalify.mobile",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Shalify utilise Face ID pour déverrouiller ton compte en toute sécurité."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -26,12 +30,25 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Shalify utilise Face ID pour déverrouiller ton compte en toute sécurité."
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "baseUrl": "/app"
     },
     "extra": {
       "apiBaseUrl": "https://shalify.app",
       "eas": {
-        "projectId": "cad894e2-41fe-44ff-9f4b-fa381432eebc"
+        "projectId": "07f15ed4-25b3-46e7-ad20-09e6c7f8e1a6"
       }
     }
   }

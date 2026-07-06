@@ -16,4 +16,11 @@ export const Shadows = {
     android: { elevation: 8 },
     default: {},
   }),
+  // Ombre marquée validée par la charte : 0 12px 34px rgba(15,31,23,.20)
+  // Réservée aux blocs qui se détachent (cartes mises en avant, hero).
+  marquee: Platform.select({
+    ios: { shadowColor: '#0F1F17', shadowOffset: { width: 0, height: 12 }, shadowOpacity: 0.2, shadowRadius: 17, elevation: 12 },
+    android: { elevation: 12 },
+    default: {},
+  }),
 } as const;

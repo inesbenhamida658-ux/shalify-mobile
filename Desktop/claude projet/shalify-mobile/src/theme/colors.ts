@@ -1,24 +1,28 @@
 export const Colors = {
-  // Palette Shalify
-  creme: '#FAF7F2',
-  cremeF: '#F2EDE4',
+  // Palette Shalify — charte validée (DESIGN-SHALIFY-VALIDE.md)
+  creme: '#FAF6EE',
+  creme2: '#F3EEE1',
+  cremeF: '#F3EEE1',
   vert: '#3D6B4F',
   vertF: '#2A4E38',
-  vertTF: '#0F1F17',
-  or: '#D4A853',
+  vertTF: '#1C2A20',
+  or: '#C9A84C',
   orF: '#C9A84C',
-  texte: '#2A2A2A',
-  texteSec: '#666666',
+  orClair: '#E9D9A6', // accent d'un mot sur fond vert (ex : « valeur »)
+  encre: '#1C2A20',
+  brume: '#6F7D72',
+  texte: '#1C2A20',
+  texteSec: '#6F7D72',
   blanc: '#FFFFFF',
-  bordure: '#E8E4DC',
-  gris: '#9A9A9A',
+  bordure: '#E8E1D3',
+  gris: '#9AA69C',
   erreur: '#C0392B',
-  succes: '#27AE60',
-  avertissement: '#F39C12',
+  succes: '#3D6B4F',
+  avertissement: '#C9A84C',
   // Overlays
-  overlay: 'rgba(15,31,23,0.6)',
+  overlay: 'rgba(28,42,32,0.6)',
   // Fond écrans
-  fond: '#FAF7F2',
+  fond: '#FAF6EE',
   fondCard: '#FFFFFF',
 } as const;
 

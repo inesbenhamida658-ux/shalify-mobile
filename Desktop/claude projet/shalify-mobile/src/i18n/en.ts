@@ -17,6 +17,12 @@ export const en = {
   login_signup: 'Create an account',
   login_forgot: 'Forgot password?',
   login_loading: 'Sending...',
+  login_password: 'Password',
+  login_password_ph: 'Your password',
+  login_password_cta: 'Sign in',
+  login_use_password: 'Use my password',
+  login_use_code: 'Get a code by email',
+  login_sans_compte: 'Browse as a guest',
 
   signup_titre: 'Join Shalify',
   signup_sous_titre: 'Every human being has real value to share',
@@ -37,6 +43,13 @@ export const en = {
   home_section_createurs: 'Creators to discover',
   home_section_ressources: 'Resources of the moment',
   home_voir_tout: 'See all',
+  home_createur_jour: 'Creator of the day',
+  home_categories: 'Explore by theme',
+  home_decouvrir: 'Discover',
+  home_hero_titre: 'Every talent has real value.',
+  home_hero_valeur: 'value',
+  home_hero_soustitre: 'Learn from verified experts, connect with real people, and reveal what you know how to do.',
+  home_hero_cta: 'DISCOVER SHALIFY',
 
   search_ph: 'Search a creator, a skill...',
   search_vide: 'Type something to start',
@@ -53,6 +66,9 @@ export const en = {
   creator_avis: 'Reviews',
   creator_verified: 'Verified profile',
   creator_verifie: 'Verified profile',
+  creator_video: 'Presentation',
+  creator_video_ouvrir: 'Watch the video',
+  creator_galerie: 'In pictures',
   creator_reserver: 'Book a session',
 
   messages_titre: 'Messages',
@@ -123,8 +139,353 @@ export const en = {
   signaler_envoye: 'Thank you, your report has been sent.',
   partage_message: 'Discover this creator on Shalify',
   creator_introuvable: 'Creator unavailable',
+  creator_bloquer: 'Block this profile',
+  bloque_confirme: 'Profile blocked. You will not see it again.',
 
   // Home sections
   home_section_formations: 'Courses',
   home_section_lives: 'Upcoming lives',
+
+  // Library
+  biblio_titre: 'Library',
+  biblio_sous: 'Courses, lives and audios to grow at your own pace.',
+  biblio_formations: 'Courses',
+  biblio_formations_sous: 'Programs to learn step by step.',
+  biblio_lives: 'Lives',
+  biblio_lives_sous: 'Live sessions and collective gatherings.',
+  biblio_audios: 'Audios',
+  biblio_audios_sous: 'Meditations and audios to listen to.',
+  biblio_audios_bientot: 'Your audios are coming very soon.',
+  lives_titre: 'Lives',
+  lives_a_venir: 'Upcoming',
+  lives_passes: 'Past sessions',
+  lives_vide: 'Beautiful sessions are on the way.',
+  lives_places: 'seats',
+  formations_titre: 'Courses',
+  formations_vide: 'New courses are on the way.',
+  formations_niveau: 'Level',
+
+  // News feed
+  actus_titre: 'News',
+  actus_sous: 'The latest on Shalify: creators, lives and courses.',
+  actus_vide: 'Fresh news is on the way. Come back soon.',
+
+  // Daily ritual
+  home_rituel_titre: 'Your daily ritual',
+  home_rituel_sous: 'Mantra, streak and gratitude, in one gentle move.',
+  rituel_ouvrir: 'Open my ritual',
+  rituel_titre: 'My ritual',
+  rituel_mantra: 'Mantra of the day',
+  rituel_streak: 'Your streak',
+  rituel_jour: 'day',
+  rituel_jours: 'days',
+  rituel_defi: 'Challenge of the month',
+  rituel_parcours: 'Guided path',
+  rituel_gratitude: 'Gratitude of the day',
+  rituel_gratitude_ph: 'What are you thankful for today?',
+  rituel_gratitude_add: 'Add',
+  rituel_gratitude_vide: 'Your gratitudes will grow here, one a day.',
+
+  // Values quiz
+  quiz_titre: 'What moves you?',
+  quiz_sous: 'Pick what feels like you. We tailor your home.',
+  quiz_valider: 'Save my values',
+  quiz_passer: 'Later',
+  quiz_refaire: 'Retake the quiz',
+  quiz_merci: 'Your home reflects you now.',
+  home_pourtoi: 'Chosen for you',
+  home_quiz_cta: 'Personalize my home',
+
+  // Referral
+  referral_titre: 'Referral',
+  referral_sous: 'Share Shalify with the people you love.',
+  referral_code: 'Your code',
+  referral_partager: 'Share my code',
+  referral_share_intro: 'Join me on Shalify with my code',
+
+  // Help
+  help_titre: 'Help',
+  help_sous: 'Answers to the most frequent questions.',
+
+  // Settings entries
+  settings_perso: 'Personalization',
+  settings_rituel: 'My ritual',
+  settings_parrainage: 'Referral',
+  settings_aide: 'Help',
+
+  err_email: 'Invalid email',
+  err_code: 'Invalid code',
+  err_prenom: 'First name required',
+  error_titre: 'Something went wrong',
+  reessayer: 'Retry',
+  type_seance: 'Session',
+  type_formation: 'Course',
+  type_live: 'Live',
+  type_ressource: 'Resource',
+  avis_un: 'reviews',
+  settings_explorer: 'Explore',
+  settings_offrir: 'Gift an experience',
+  settings_packs: 'Shalify Packs',
+  biometrie_titre: 'Unlock your account.',
+  biometrie_cta: 'UNLOCK',
+  biometrie_prompt: 'Unlock Shalify',
+  biometrie_fallback: 'Use passcode',
+
+  // My creator page (profile editor)
+  edit_profil_carte_titre: 'My creator page',
+  edit_profil_carte_sous: 'Add your photo, your presentation and your offers to bring your page to life.',
+  edit_profil_carte_bouton: 'Edit my page',
+  edit_profil_titre: 'My creator page',
+  edit_profil_intro: 'Fill in your page so your talent shines. Your photo and one offer are enough to begin.',
+  edit_profil_prenom: 'First name',
+  edit_profil_nom: 'Last name',
+  edit_profil_specialite: 'Specialty',
+  edit_profil_specialite_ph: 'Personal growth coach',
+  edit_profil_bio: 'Presentation',
+  edit_profil_bio_ph: 'Share your journey and what you love to pass on (25 words or more).',
+  edit_profil_rubrique: 'Category',
+  edit_profil_ville: 'City',
+  edit_profil_pays: 'Country',
+  edit_profil_photo: 'Your photo link',
+  edit_profil_photo_aide: 'Paste your photo link here. You can also upload it from the Shalify site.',
+  edit_profil_services: 'My offers',
+  edit_profil_services_aide: 'One offer with a title and a description makes your page visible right away.',
+  edit_profil_service_titre: 'Offer title',
+  edit_profil_service_desc: 'Description',
+  edit_profil_service_duree: 'Duration',
+  edit_profil_service_duree_ph: '1 hour',
+  edit_profil_service_prix: 'Price',
+  edit_profil_service_retirer: 'Remove this offer',
+  edit_profil_service_ajouter: 'Add an offer',
+  edit_profil_code: 'Edit code',
+  edit_profil_code_ph: 'Paste your code here',
+  edit_profil_code_aide: 'Your edit code arrives in your Shalify welcome email. Tap here to open the site.',
+  edit_profil_code_requis: 'Add your edit code to publish your changes. It is in your Shalify welcome email.',
+  edit_profil_code_invalide: 'This edit code needs a check. Please see your Shalify welcome email.',
+  edit_profil_requis: 'Add at least your first name, last name and a presentation.',
+  edit_profil_ok: 'Your page is saved. It appears as soon as the server validates it.',
+  edit_profil_erreur: 'The connection was interrupted. Please try again in a moment.',
+  edit_profil_enregistrer: 'Save my page',
+
+  // How it works / About
+  about_carte_bouton: 'How it works',
+  about_titre: 'How it works',
+  about_intro: 'Shalify brings real people together around their true value. Your life experience is already a qualification.',
+  about_concept_titre: 'Our idea',
+  about_concept_texte: 'Every talent has value. Here, your knowledge meets the people who need it, everywhere in the world.',
+  about_etapes_titre: 'In 3 steps',
+  about_etape1_titre: 'Discover',
+  about_etape1_texte: 'Explore verified creators, by category and by value.',
+  about_etape2_titre: 'Connect',
+  about_etape2_texte: 'Choose a person who speaks to you and reach out.',
+  about_etape3_titre: 'Grow',
+  about_etape3_texte: 'Learn, create, pass it on. Everyone moves forward and receives.',
+  about_rubriques_titre: 'The 7 categories',
+  about_cta: 'Explore creators',
+
+  // Trust and notices (legal)
+  legal_carte_bouton: 'Trust and notices',
+  legal_titre: 'Trust and notices',
+  legal_intro: 'Our official texts, clear and accessible.',
+  legal_cgu: 'Terms of use',
+  legal_cgv: 'Terms of sale',
+  legal_confidentialite: 'Privacy',
+  legal_mentions: 'Legal notice',
+  legal_cookies: 'Cookie policy',
+
+  // Audios (guided meditations)
+  audios_titre: 'Audios and meditations',
+  audios_sous: 'Short guides to follow gently, to breathe and recenter.',
+  audios_guide: 'The guide',
+  biblio_test: 'Discovery test',
+  biblio_test_sous: 'Five questions to reveal your Shalify profile.',
+
+  // Discovery test (library)
+  test_titre: 'Discovery test',
+  test_resultat: 'Your profile',
+  test_explorer: 'Explore creators',
+  test_refaire: 'Retake the test',
+  test_progression: 'Question {n} of {total}',
+
+  // Guidance of the month
+  guidance_titre: 'Guidance of the month',
+  guidance_theme: 'The theme',
+  guidance_intention: 'Your intention',
+
+  // Mantra of the day
+  mantra_titre: 'Mantra of the day',
+  mantra_sous: 'A gentle line to carry with you today.',
+  mantra_du_jour: 'Mantra of the day',
+  mantra_autre: 'Another mantra',
+
+  // Values compass (quiz)
+  quiz_boussole: 'Values compass',
+
+  // Compatibility / Deep connection
+  compat_titre: 'Deep connection',
+  compat_sous: 'Choose a value for each and discover your resonance.',
+  compat_personne1: 'First person',
+  compat_personne2: 'Second person',
+  compat_reveler: 'Reveal the resonance',
+  compat_refaire: 'Start again',
+
+  // Morning grounding
+  ancrage_titre: 'Morning grounding',
+  ancrage_commencer: 'Begin my grounding',
+  ancrage_suivant: 'Next',
+  ancrage_terminer: 'Finish',
+  ancrage_recommencer: 'Start again',
+  ancrage_fin_titre: 'Your grounding is set',
+  ancrage_fin_texte: 'Have a beautiful day. You can return to this ritual anytime.',
+
+  // Subscription / Shalify Circle
+  abo_eyebrow: 'Shalify Circle',
+  abo_titre: 'The Circle',
+  abo_sous: 'A special space to move forward surrounded and inspired every month.',
+  abo_inclus: 'What you receive',
+  abo_avantage1: 'An inspiring gathering every month.',
+  abo_avantage2: 'Gentle content reserved for the Circle.',
+  abo_avantage3: 'A caring community around your values.',
+  abo_avantage4: 'Early invitations to the lives.',
+  abo_rejoindre: 'Join the Circle',
+  abo_mention: 'Secure payment on shalify.app. You stay free at every step.',
+
+  // My requests / My library
+  achats_titre: 'My requests',
+  achats_sous: 'Find here the sessions and creations you have requested.',
+  achats_vide_titre: 'Your library is growing',
+  achats_vide: 'Your requests will appear here after your first booking.',
+  achats_statut: 'Request sent',
+
+  // Profile preview before publishing
+  apercu_bouton: 'Preview my profile',
+  apercu_notice: 'Here is your profile as visitors will see it.',
+  apercu_continuer: 'Continue editing',
+  apercu_pied: 'Preview before publishing',
+  apercu_indispo: 'The preview is unavailable right now.',
+  apercu_nom_vide: 'Your name',
+
+  // Settings — new sections
+  settings_experiences: 'Experiences',
+  home_experiences: 'Your experiences',
+
+  // Calm space (hub)
+  calme_titre: 'Calm space',
+  calme_sous: 'Small gentle moments, just for you.',
+  calme_ouvrir: 'Open the calm space',
+
+  // Emotion wheel
+  emotions_titre: 'Emotion wheel',
+  emotions_sous: 'Name what you feel, receive a kind word.',
+  emotions_invite: 'An invitation',
+  emotions_autre: 'Choose another feeling',
+
+  // Guided breathing
+  respire_titre: 'Guided breathing',
+  respire_sous: 'Follow the golden circle as it grows and settles.',
+  respire_soir_titre: 'Evening breathing',
+  respire_soir_sous: 'A longer breath to prepare for rest.',
+  respire_inspire: 'Breathe in',
+  respire_pause: 'Hold',
+  respire_expire: 'Breathe out',
+  respire_pret: 'Ready to breathe?',
+  respire_commencer: 'Begin',
+  respire_fin: 'Lovely moment. Come back whenever you wish.',
+  respire_cycle: 'Cycle {n} of {total}',
+
+  // Card of the day
+  carte_titre: 'Card of the day',
+  carte_sous: 'An inspiration drawn for you this morning.',
+  carte_tirer: 'Draw my card',
+
+  // Inner weather
+  meteo_titre: 'Inner weather',
+  meteo_sous: 'Choose your sky of the day, receive an intention.',
+  meteo_intention: 'Your intention',
+  meteo_changer: 'Change sky',
+
+  // Custom affirmation
+  affirmation_titre: 'My affirmation',
+  affirmation_sous: 'Write your phrase of the day, it waits for you at each visit.',
+  affirmation_ph: 'Today, I choose…',
+  affirmation_save: 'Keep my phrase',
+  affirmation_vide: 'Your phrase will appear here, gentle and yours.',
+
+  // Small wins
+  victoires_titre: 'Small wins',
+  victoires_sous: 'Note a success of the day, even a tiny one.',
+  victoires_ph: 'Today, I managed to…',
+  victoires_add: 'Add',
+  victoires_vide: 'Your wins will land here, one a day.',
+
+  // Presence timer
+  minuteur_titre: 'Presence timer',
+  minuteur_sous: 'Choose a duration and settle in silence.',
+  minuteur_demarrer: 'Start',
+  minuteur_arreter: 'Stop',
+  minuteur_fin: 'There. You gave yourself a moment of calm.',
+
+  // Quote of the month
+  citations_titre: 'Quote of the month',
+  citations_sous: 'A gentle thought to let infuse.',
+
+  // Mini glossary
+  lexique_titre: 'Mini glossary',
+  lexique_sous: 'The gentle words of the Shalify method, explained simply.',
+
+  // 21-day journey
+  parcours21_titre: '21-day journey',
+  parcours21_sous: 'A longer ritual, one small step each day.',
+  parcours21_progress: '{n} days of 21',
+
+  // Calm room
+  salle_titre: 'Calm room',
+  salle_sous: 'A space to do nothing, just breathe.',
+  salle_phrase: 'You are here. That is already a lot.',
+
+  // My progress
+  progression_titre: 'My progress',
+  progression_sous: 'Your path in gentleness, day after day.',
+  progression_serie: 'Your streak',
+  progression_gratitudes: 'Gratitudes noted',
+  progression_victoires: 'Small wins',
+  progression_parcours: '21-day journey',
+  progression_vide: 'Start an experience to see your path grow.',
+
+  // Onboarding
+  onboarding_passer: 'Skip',
+  onboarding_suivant: 'Continue',
+  onboarding_commencer: 'Enter Shalify',
+  onboarding_1_titre: 'Welcome to Shalify',
+  onboarding_1_texte: 'A gentle space where every talent has value, and you move at your own pace.',
+  onboarding_2_titre: 'Real creators',
+  onboarding_2_texte: 'Discover verified people, aligned with your values, all over the world.',
+  onboarding_3_titre: 'Your gentle moments',
+  onboarding_3_texte: 'Mantra, breathing, gratitude and guidance walk with you each day.',
+
+  // Thank you after booking
+  merci_titre: 'Thank you for your trust',
+  merci_texte: 'Your request has arrived. The Shalify team gently comes back to you to finalize.',
+  merci_retour: 'Back to my space',
+
+  // Creators — filters and suggestions
+  filtre_lieu: 'Place',
+  filtre_tous_lieux: 'Everywhere',
+  tri_valeurs: 'Close to my values',
+  createur_semaine: 'Creator of the week',
+  createur_nouveau: 'New',
+  createur_meme_univers: 'In the same universe',
+  recents_titre: 'Recently viewed',
+
+  // Text size
+  texte_taille_titre: 'Text size',
+  texte_taille_sous: 'Choose a reading comfort.',
+  texte_taille_petit: 'Small',
+  texte_taille_normal: 'Normal',
+  texte_taille_grand: 'Large',
+  texte_taille_tres_grand: 'Very large',
+
+  // Extended test + home
+  home_test_rappel: 'Your Shalify profile',
+  home_test_refaire: 'Review my profile',
 };

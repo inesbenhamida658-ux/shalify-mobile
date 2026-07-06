@@ -17,7 +17,7 @@ export function ForgotPasswordScreen({ navigation }: Props) {
 
   const handleSubmit = async () => {
     setError('');
-    if (!email.includes('@')) { setError('Email invalide'); return; }
+    if (!email.includes('@')) { setError(t('err_email')); return; }
     setLoading(true);
     try {
       await forgotPassword(email);

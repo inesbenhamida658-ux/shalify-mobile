@@ -1,20 +1,19 @@
-import { Platform } from 'react-native';
+import { Fonts } from '../fonts';
 
-const playfairFallback = Platform.select({ ios: 'Georgia', android: 'serif', default: 'Georgia' });
-const bodyFont = Platform.select({ ios: 'System', android: 'sans-serif', default: 'System' });
-
+// Charte validée : titres Cormorant 500, texte Poppins 300/400.
+// Cormorant rend petit : tailles de titres légèrement montées.
 export const Typography = {
-  // Titres — style Playfair
-  h1: { fontFamily: playfairFallback, fontSize: 32, fontWeight: '400' as const, lineHeight: 40 },
-  h2: { fontFamily: playfairFallback, fontSize: 24, fontWeight: '400' as const, lineHeight: 32 },
-  h3: { fontFamily: playfairFallback, fontSize: 20, fontWeight: '400' as const, lineHeight: 28 },
-  // Corps — minimum 16px
-  body: { fontFamily: bodyFont, fontSize: 16, lineHeight: 24 },
-  bodySmall: { fontFamily: bodyFont, fontSize: 14, lineHeight: 22 }, // minimum 14px
-  caption: { fontFamily: bodyFont, fontSize: 12, lineHeight: 18 },
+  // Titres — Cormorant 500 (h3 en 600 pour rester lisible en petit)
+  h1: { fontFamily: Fonts.serifMedium, fontSize: 40, lineHeight: 44 },
+  h2: { fontFamily: Fonts.serifMedium, fontSize: 30, lineHeight: 36 },
+  h3: { fontFamily: Fonts.serifSemi, fontSize: 22, lineHeight: 28 },
+  // Corps — Poppins (minimum 16px)
+  body: { fontFamily: Fonts.bodyRegular, fontSize: 16, lineHeight: 24 },
+  bodySmall: { fontFamily: Fonts.bodyRegular, fontSize: 14, lineHeight: 22 },
+  caption: { fontFamily: Fonts.bodyRegular, fontSize: 12, lineHeight: 18 },
   // Labels
-  label: { fontFamily: bodyFont, fontSize: 14, fontWeight: '600' as const, lineHeight: 20, letterSpacing: 0.5 },
-  labelSmall: { fontFamily: bodyFont, fontSize: 12, fontWeight: '600' as const, lineHeight: 18, letterSpacing: 0.8 },
+  label: { fontFamily: Fonts.bodySemi, fontSize: 14, lineHeight: 20, letterSpacing: 0.3 },
+  labelSmall: { fontFamily: Fonts.bodySemi, fontSize: 12, lineHeight: 18, letterSpacing: 1.6 },
   // Boutons
-  button: { fontFamily: bodyFont, fontSize: 16, fontWeight: '600' as const, lineHeight: 24 },
+  button: { fontFamily: Fonts.bodySemi, fontSize: 16, lineHeight: 24 },
 } as const;

@@ -20,8 +20,8 @@ export function SignupScreen({ navigation }: Props) {
 
   const handleSignup = async () => {
     setError('');
-    if (!prenom.trim()) { setError('Prénom requis'); return; }
-    if (!email.includes('@')) { setError('Email invalide'); return; }
+    if (!prenom.trim()) { setError(t('err_prenom')); return; }
+    if (!email.includes('@')) { setError(t('err_email')); return; }
     setLoading(true);
     try {
       // Inscription via OTP — même flux que connexion

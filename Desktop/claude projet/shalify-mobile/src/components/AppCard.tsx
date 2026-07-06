@@ -12,8 +12,10 @@ interface Props {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.blanc,
-    borderRadius: Radius.lg,
-    padding: Spacing.md,
+    borderRadius: Radius.card, // cartes très rondes (charte validée)
+    borderWidth: 1,
+    borderColor: 'rgba(201,168,76,0.28)', // fin trait or (charte)
+    padding: Spacing.lg,
     ...(Shadows.md as object),
   },
 });

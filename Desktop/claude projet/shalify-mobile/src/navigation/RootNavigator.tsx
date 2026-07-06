@@ -20,7 +20,11 @@ const linking: any = {
     screens: {
       Main: {
         screens: {
-          CreateursTab: { screens: { CreatorDetail: 'creator/:creatorId' } },
+          Tabs: {
+            screens: {
+              CreateursTab: { screens: { CreatorDetail: 'creator/:creatorId' } },
+            },
+          },
         },
       },
     },
@@ -28,18 +32,17 @@ const linking: any = {
 };
 
 export function RootNavigator() {
-  const { user, loading } = useAuth();
+  const { loading } = useAuth();
 
   if (loading) return <LoadingState />;
 
+  // App ouverte : tout le monde entre et visite. La connexion s'ouvre en fenêtre,
+  // seulement quand on veut agir (Profil, Messages, réservation).
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {user ? (
-          <Stack.Screen name="Main" component={MainTabs} />
-        ) : (
-          <Stack.Screen name="Auth" component={AuthStack} />
-        )}
+        <Stack.Screen name="Main" component={MainTabs} />
+        <Stack.Screen name="Auth" component={AuthStack} options={{ presentation: 'modal' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

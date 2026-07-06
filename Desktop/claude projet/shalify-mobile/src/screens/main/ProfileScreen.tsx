@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { ScreenContainer, AppText, AppCard, AppButton, AppInput } from '../../components';
+import { GradientHero } from '../../components/GradientHero';
 import { Colors, Spacing, Radius } from '../../theme';
+import { useNavigation } from '@react-navigation/native';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 import { getCurrency, saveCurrency } from '../../storage';
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
 export function ProfileScreen() {
   const { t, lang, changeLang } = useLang();
   const { user, logout } = useAuth();
+  const navigation = useNavigation<any>();
   const [currency, setCurrency] = React.useState<Currency>('EUR');
   const [loadedCurrency, setLoadedCurrency] = React.useState(false);
 
@@ -48,8 +51,11 @@ export function ProfileScreen() {
   if (!user) {
     return (
       <ScreenContainer>
-        <AppText variant="h2" style={{ marginBottom: Spacing.xl }}>{t('profil_titre')}</AppText>
-        <AppText variant="body" color="secondary">{t('profil_non_connecte')}</AppText>
+        <GradientHero eyebrow="SHALIFY" titre={t('profil_titre')} sousTitre={t('profil_non_connecte')} />
+        <AppButton label={t('signup_connexion')} onPress={() => navigation.navigate('Auth')} fullWidth />
+        <AppButton label={t('login_signup')} onPress={() => navigation.navigate('Auth')} variant="outline" style={{ marginTop: Spacing.sm }} />
+        <AppButton label={t('settings_titre')} onPress={() => navigation.navigate('Settings')} variant="outline" style={{ marginTop: Spacing.sm }} />
+        <AppButton label={t('about_carte_bouton')} onPress={() => navigation.navigate('About')} variant="ghost" style={{ marginTop: Spacing.sm }} />
       </ScreenContainer>
     );
   }
@@ -61,6 +67,12 @@ export function ProfileScreen() {
       </View>
       <AppText variant="h2" align="center">{user.prenom}</AppText>
       <AppText variant="bodySmall" color="secondary" align="center" style={{ marginBottom: Spacing.xl }}>{user.email}</AppText>
+
+      <View style={styles.section}>
+        <AppText variant="h3" style={{ marginBottom: Spacing.xs }}>{t('edit_profil_carte_titre')}</AppText>
+        <AppText variant="caption" color="muted" style={{ marginBottom: Spacing.sm }}>{t('edit_profil_carte_sous')}</AppText>
+        <AppButton label={t('edit_profil_carte_bouton')} onPress={() => navigation.navigate('EditProfile')} fullWidth />
+      </View>
 
       <View style={styles.section}>
         <AppText variant="h3" style={{ marginBottom: Spacing.sm }}>{t('settings_langue')}</AppText>
@@ -83,6 +95,9 @@ export function ProfileScreen() {
         </View>
       </View>
 
+      <AppButton label={t('settings_titre')} onPress={() => navigation.navigate('Settings')} variant="outline" style={{ marginBottom: Spacing.sm }} />
+      <AppButton label={t('about_carte_bouton')} onPress={() => navigation.navigate('About')} variant="ghost" style={{ marginBottom: Spacing.sm }} />
+      <AppButton label={t('legal_carte_bouton')} onPress={() => navigation.navigate('Legal')} variant="ghost" style={{ marginBottom: Spacing.sm }} />
       <AppButton label={t('profil_deconnexion')} onPress={handleLogout} variant="outline" style={{ borderColor: Colors.erreur }} />
     </ScreenContainer>
   );

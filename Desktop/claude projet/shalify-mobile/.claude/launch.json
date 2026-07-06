@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "apercu-app-web",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["serve-app-web.js"],
+      "port": 5055
+    }
+  ]
+}

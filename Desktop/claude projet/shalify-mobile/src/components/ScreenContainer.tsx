@@ -40,6 +40,9 @@ export function ScreenContainer({ children, scrollable = true, style, onRefresh,
           style={styles.scroll}
           contentContainerStyle={[styles.content, ph, style]}
           showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+          automaticallyAdjustKeyboardInsets
           refreshControl={onRefresh ? <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} tintColor={Colors.vert} /> : undefined}
         >
           {children}

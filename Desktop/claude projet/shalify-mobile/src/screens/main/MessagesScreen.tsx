@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import { ScreenContainer, AppText, AppCard, AppInput, AppButton, LoadingState, EmptyState } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
+import { useNavigation } from '@react-navigation/native';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
 export function MessagesScreen() {
   const { t } = useLang();
   const { user } = useAuth();
+  const navigation = useNavigation<any>();
   const [messages, setMessages] = useState<MessageLocal[]>([]);
   const [texte, setTexte] = useState('');
 
@@ -43,6 +45,7 @@ export function MessagesScreen() {
     return (
       <ScreenContainer>
         <EmptyState titre={t('messages_login')} description={t('messages_login_desc')} />
+        <AppButton label={t('signup_connexion')} onPress={() => navigation.navigate('Auth')} fullWidth style={{ marginTop: Spacing.lg }} />
       </ScreenContainer>
     );
   }

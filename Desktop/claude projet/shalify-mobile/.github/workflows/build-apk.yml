@@ -1,0 +1,49 @@
+name: Build APK Android (gratuit, sans Expo)
+
+# Fabrique un APK installable sur les serveurs GRATUITS de GitHub.
+# Aucune limite Expo, aucun paiement. Se lance à chaque push, ou à la main.
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Java 17 (pour Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Outils Android (SDK)
+        uses: android-actions/setup-android@v3
+
+      - name: Installer les dépendances
+        run: npm install --no-audit --no-fund
+
+      - name: Générer le projet Android natif
+        run: npx expo prebuild --platform android --no-install
+
+      - name: Fabriquer l'APK (debug = installable, signé automatiquement)
+        run: |
+          cd android
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: Publier l'APK (téléchargeable dans l'onglet Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: shalify-apk
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

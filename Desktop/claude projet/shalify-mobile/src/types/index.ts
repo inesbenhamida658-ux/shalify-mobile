@@ -30,6 +30,15 @@ export interface Creator {
   rating?: number;
   reviewCount?: number;
   services?: Service[];
+  // Vidéo de présentation (champ videoUrl du site), lue si la créatrice en ajoute une.
+  videoUrl?: string;
+  // Galerie de photos additionnelles (s'affiche dès qu'une créatrice en ajoute).
+  galerie?: string[];
+  // Lieu (renseigné par la créatrice côté site). Sert au filtre lieu, si présent.
+  ville?: string;
+  pays?: string;
+  // Date de création côté site, si l'API la renvoie (sert au badge « nouveau »).
+  createdAt?: string;
 }
 
 export interface Service {

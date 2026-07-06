@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, ViewStyle } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { AppButton } from './AppButton';
 import { startCheckout } from '../services/payments';
 import { useAuth } from '../context/AuthContext';
@@ -18,6 +19,8 @@ interface Props {
 export function CheckoutButton({ creator, service, style, label }: Props) {
   const { user, token } = useAuth();
   const { t } = useLang();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navigation = useNavigation<any>();
   const [loading, setLoading] = useState(false);
 
   const onPress = async () => {
@@ -30,9 +33,11 @@ export function CheckoutButton({ creator, service, style, label }: Props) {
       const res = await startCheckout({ creator, service, user, token: token ?? undefined });
       if (res.paiementOuvert) {
         Alert.alert(t('booking_confirme_titre'), t('booking_confirme_msg'));
+        navigation.navigate('ThankYou');
       } else if (res.reservationEnregistree) {
         // Réservation OK mais le lien Ziina n'a pas pu s'ouvrir : on guide le client
         Alert.alert(t('booking_confirme_titre'), t('booking_lien_manuel'));
+        navigation.navigate('ThankYou');
       } else {
         Alert.alert(t('erreur_generique'));
       }
