@@ -4,6 +4,7 @@
 // reçu dans l'email de bienvenue Shalify. On le garde en mémoire sécurisée.
 import * as SecureStore from 'expo-secure-store';
 import { apiGet, apiPut } from './api';
+import { repairText } from '../utils/repairText';
 
 const EDIT_TOKEN_KEY = 'shalify_edit_token';
 
@@ -77,18 +78,18 @@ export async function getMyProfile(email: string, profilId?: string): Promise<Ed
     if (!mine) return base;
     return {
       id: mine.id,
-      prenom: mine.prenom ?? '',
-      nom: mine.nom ?? '',
+      prenom: repairText(mine.prenom ?? ''),
+      nom: repairText(mine.nom ?? ''),
       email,
-      specialite: mine.specialite ?? '',
-      bio: mine.bio ?? '',
-      rubrique: mine.rubrique ?? 'Compétences',
-      ville: mine.ville ?? '',
-      pays: mine.pays ?? '',
+      specialite: repairText(mine.specialite ?? ''),
+      bio: repairText(mine.bio ?? ''),
+      rubrique: repairText(mine.rubrique ?? 'Compétences'),
+      ville: repairText(mine.ville ?? ''),
+      pays: repairText(mine.pays ?? ''),
       photoUrl: mine.photoUrl ?? mine.avatar ?? '',
       services: (mine.services ?? []).map(s => ({
-        titre: s.titre ?? s.nom ?? '',
-        description: s.description ?? '',
+        titre: repairText(s.titre ?? s.nom ?? ''),
+        description: repairText(s.description ?? ''),
         duree: s.duree ?? '',
         prix: (s.prix ?? s.tarif) != null ? String(s.prix ?? s.tarif) : '',
       })),
