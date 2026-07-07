@@ -1,45 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { ScreenContainer, AppText, AppCard, AppInput, AppButton, LoadingState, EmptyState } from '../../components';
-import { Colors, Spacing, Radius } from '../../theme';
+import { View, FlatList, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+import { ScreenContainer, AppText, AppCard, AppButton, LoadingState, EmptyState } from '../../components';
+import { Colors, Spacing } from '../../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
-
-// MVP Messages — aucun backend réel, fil local uniquement
-interface MessageLocal { id: string; texte: string; auteur: 'moi' | 'autre'; ts: number }
+import { getConversations, type Conversation } from '../../services/messages';
 
 const styles = StyleSheet.create({
-  bubbleMoi: {
-    alignSelf: 'flex-end',
-    backgroundColor: Colors.vert,
-    borderRadius: Radius.lg,
-    borderBottomRightRadius: 4,
-    padding: Spacing.md,
-    maxWidth: '80%',
-    marginBottom: Spacing.sm,
+  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  avatar: {
+    width: 44, height: 44, borderRadius: 22, backgroundColor: Colors.vertF,
+    alignItems: 'center', justifyContent: 'center', marginRight: Spacing.md,
   },
-  bubbleAutre: {
-    alignSelf: 'flex-start',
-    backgroundColor: Colors.blanc,
-    borderRadius: Radius.lg,
-    borderBottomLeftRadius: 4,
-    padding: Spacing.md,
-    maxWidth: '80%',
-    marginBottom: Spacing.sm,
-    borderWidth: 1,
-    borderColor: Colors.bordure,
-  },
-  inputRow: { flexDirection: 'row', gap: Spacing.sm, alignItems: 'center', paddingTop: Spacing.sm },
-  notice: { backgroundColor: Colors.cremeF, borderRadius: Radius.sm, padding: Spacing.sm, marginBottom: Spacing.md },
+  card: { marginBottom: Spacing.md },
 });
 
 export function MessagesScreen() {
   const { t } = useLang();
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const navigation = useNavigation<any>();
-  const [messages, setMessages] = useState<MessageLocal[]>([]);
-  const [texte, setTexte] = useState('');
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!user?.email) { setLoading(false); return; }
+    let actif = true;
+    setLoading(true);
+    getConversations(user.email, token ?? undefined)
+      .then((list) => { if (actif) setConversations(list); })
+      .catch(() => { if (actif) setConversations([]); })
+      .finally(() => { if (actif) setLoading(false); });
+    return () => { actif = false; };
+  }, [user?.email, token]);
 
   if (!user) {
     return (
@@ -50,35 +43,35 @@ export function MessagesScreen() {
     );
   }
 
-  const envoyer = () => {
-    if (!texte.trim()) return;
-    setMessages(prev => [...prev, { id: Date.now().toString(), texte: texte.trim(), auteur: 'moi', ts: Date.now() }]);
-    setTexte('');
-  };
-
   return (
     <ScreenContainer scrollable={false}>
       <AppText variant="h2" style={{ marginBottom: Spacing.md }}>{t('messages_titre')}</AppText>
-      <View style={styles.notice}>
-        <AppText variant="caption" color="secondary">{t('messages_mvp_notice')}</AppText>
-      </View>
 
-      <FlatList
-        data={messages}
-        keyExtractor={m => m.id}
-        style={{ flex: 1 }}
-        ListEmptyComponent={<EmptyState titre={t('messages_vide')} />}
-        renderItem={({ item }) => (
-          <View style={item.auteur === 'moi' ? styles.bubbleMoi : styles.bubbleAutre}>
-            <AppText variant="bodySmall" color={item.auteur === 'moi' ? 'white' : 'primary'}>{item.texte}</AppText>
-          </View>
-        )}
-      />
-
-      <View style={styles.inputRow}>
-        <AppInput value={texte} onChangeText={setTexte} placeholder={t('messages_ph')} style={{ flex: 1, marginBottom: 0 }} />
-        <AppButton label={t('messages_envoyer')} onPress={envoyer} style={{ marginBottom: 0 }} />
-      </View>
+      {loading ? (
+        <LoadingState />
+      ) : (
+        <FlatList
+          data={conversations}
+          keyExtractor={(c) => c.id}
+          style={{ flex: 1 }}
+          ListEmptyComponent={<EmptyState titre={t('messages_vide')} description={t('messages_login_desc')} />}
+          renderItem={({ item }) => (
+            <TouchableOpacity activeOpacity={0.85} onPress={() => Linking.openURL(item.webUrl)} accessibilityRole="button">
+              <AppCard style={styles.card}>
+                <View style={styles.row}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+                    <View style={styles.avatar}>
+                      <AppText variant="h3" color="or">{(item.prenom || '?').charAt(0).toUpperCase()}</AppText>
+                    </View>
+                    <AppText variant="label">{item.prenom || '—'}</AppText>
+                  </View>
+                  <AppText variant="label" color="or">→</AppText>
+                </View>
+              </AppCard>
+            </TouchableOpacity>
+          )}
+        />
+      )}
     </ScreenContainer>
   );
 }

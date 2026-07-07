@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ScreenContainer, AppText, AppCard, EmptyState, Glyph } from '../../components';
+import { ScreenContainer, AppText, AppCard, EmptyState, Glyph, LoadingState } from '../../components';
 import { Colors, Spacing } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { getPurchases, type PurchaseEntry } from '../../storage/purchases';
@@ -25,7 +25,9 @@ export function PurchasesScreen() {
       <AppText variant="h2" style={{ marginBottom: Spacing.xs }}>{t('achats_titre')}</AppText>
       <AppText variant="bodySmall" color="secondary" style={{ marginBottom: Spacing.lg }}>{t('achats_sous')}</AppText>
 
-      {loaded && items.length === 0 ? (
+      {!loaded ? (
+        <LoadingState />
+      ) : items.length === 0 ? (
         <EmptyState titre={t('achats_vide_titre')} description={t('achats_vide')} />
       ) : (
         items.map(p => (
