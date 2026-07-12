@@ -10,16 +10,18 @@ const sh = (c) => { try { return execSync(c, { cwd: root }).toString().trim(); }
 sh('git fetch origin --quiet');
 let ok = true;
 
-// 1) Branche courante en avance sur main = travail pas encore publie.
-const br = sh('git rev-parse --abbrev-ref HEAD');
-const ahead = sh(`git rev-list --count origin/main..HEAD`) || '0';
-if (ahead !== '0') { ok = false; console.log(`RESTE A PUBLIER: ${ahead} commits sur '${br}' pas encore en ligne. Pousse la branche deploy/ + bouton vert.`); }
+// Un vrai "reste a publier" = du CONTENU different de main, pas juste un historique different.
+// (Le robot auto-deploy rebase : la branche garde des commits d'avance alors que le contenu est deja en ligne.)
+const contenuDiffere = (ref) => sh(`git diff --stat origin/main ${ref}`) !== '';
 
-// 2) Toutes les branches deploy/* distantes en avance sur main.
+// 1) Branche courante : du contenu pas encore en ligne ?
+const br = sh('git rev-parse --abbrev-ref HEAD');
+if (contenuDiffere('HEAD')) { ok = false; console.log(`RESTE A PUBLIER: '${br}' a du contenu pas encore en ligne. Pousse la branche deploy/ (le robot publie, sinon bouton vert).`); }
+
+// 2) Branches deploy/* distantes : du contenu pas encore en ligne ?
 for (const b of sh('git branch -r').split('\n').map(s => s.trim()).filter(Boolean)) {
   if (!/\/deploy\//.test(b)) continue;
-  const a = sh(`git rev-list --count origin/main..${b}`) || '0';
-  if (a !== '0') { ok = false; console.log(`RESTE A PUBLIER: ${a} commits sur ${b}. Cree/merge la PR.`); }
+  if (contenuDiffere(b)) { ok = false; console.log(`RESTE A PUBLIER: ${b} a du contenu pas en ligne. Le robot devrait publier; sinon bouton vert.`); }
 }
 
 // 3) Modifs locales non enregistrees (hors fichiers ignores).
