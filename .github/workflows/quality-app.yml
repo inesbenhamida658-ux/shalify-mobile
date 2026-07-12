@@ -1,0 +1,30 @@
+name: Qualite appli (types)
+
+# Verifie les types de l'appli a chaque push/PR. Un rouge ici = ne pas fusionner.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Trouver le dossier de l'appli
+        id: app
+        run: |
+          if [ -d "Desktop/claude projet/shalify-mobile" ]; then echo "dir=Desktop/claude projet/shalify-mobile" >> "$GITHUB_OUTPUT";
+          elif [ -d "shalify-mobile" ]; then echo "dir=shalify-mobile" >> "$GITHUB_OUTPUT";
+          else echo "dir=." >> "$GITHUB_OUTPUT"; fi
+      - name: Installer
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: npm ci || npm install
+      - name: Types
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: npx tsc --noEmit --project tsconfig.check.json || npm run typecheck

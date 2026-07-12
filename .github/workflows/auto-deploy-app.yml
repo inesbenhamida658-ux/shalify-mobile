@@ -1,0 +1,67 @@
+name: Publication auto appli (deploy/**)
+
+# But : publier tout seul le travail FINI de l'appli, sans jamais mettre en ligne du code casse.
+# Declenchement : uniquement branches deploy/** (travail termine). Les branches agent/** = en cours, ne se publient pas.
+# Ordre : checkout -> npm ci -> tsc. Si TOUT vert : rebase sur main, merge --ff-only, push main. Sinon : rien ne bouge.
+
+on:
+  push:
+    branches:
+      - 'deploy/**'
+  workflow_dispatch:
+
+concurrency:
+  group: auto-deploy-app
+  cancel-in-progress: false
+
+jobs:
+  publier-si-vert:
+    name: Tests puis publication (fast-forward only)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Recuperer la branche + tout l'historique
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.AUTO_DEPLOY_TOKEN || github.token }}
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Trouver le dossier de l'appli
+        id: app
+        run: |
+          if [ -d "Desktop/claude projet/shalify-mobile" ]; then echo "dir=Desktop/claude projet/shalify-mobile" >> "$GITHUB_OUTPUT";
+          elif [ -d "shalify-mobile" ]; then echo "dir=shalify-mobile" >> "$GITHUB_OUTPUT";
+          else echo "dir=." >> "$GITHUB_OUTPUT"; fi
+
+      - name: Installer
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: npm ci || npm install
+
+      - name: Types (tsc)
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: npx tsc --noEmit --project tsconfig.check.json || npm run typecheck
+
+      - name: Publier sur main si tout est vert (fast-forward only)
+        run: |
+          git config user.name "shalify-auto-deploy"
+          git config user.email "auto@shalify.app"
+          git fetch origin main
+          git checkout -B deploy-tmp "$GITHUB_SHA"
+          if git rebase origin/main; then
+            git checkout main
+            git reset --hard origin/main
+            if git merge --ff-only deploy-tmp; then
+              git push origin main
+              echo "Publie sur main."
+            else
+              echo "Pas de fast-forward possible, rien publie (aucun degat)."
+            fi
+          else
+            echo "Conflit au rebase, rien publie (aucun degat)."
+          fi
