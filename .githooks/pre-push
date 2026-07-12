@@ -1,0 +1,18 @@
+#!/bin/sh
+# Garde-fou 5 : ne jamais pousser du code appli qui ne compile pas.
+# Verifie les types AVANT que le travail parte en ligne (evite un deploiement casse).
+root="$(git rev-parse --show-toplevel)"
+app="$root/Desktop/claude projet/shalify-mobile"
+[ -d "$app" ] || app="$root/shalify-mobile"
+
+# On ne verifie que si des fichiers de l'appli changent dans ce push.
+changed=$(git diff --cached --name-only 2>/dev/null | grep 'shalify-mobile/' | head -1)
+if [ -d "$app/node_modules" ] && [ -f "$app/tsconfig.check.json" ]; then
+  echo "pre-push: verification des types de l'appli..."
+  ( cd "$app" && npx --no-install tsc --noEmit --project tsconfig.check.json ) || {
+    echo "STOP pre-push: l'appli a des erreurs de types. Corrige avant de publier (sinon site casse)."
+    exit 1
+  }
+  echo "pre-push: types OK."
+fi
+exit 0

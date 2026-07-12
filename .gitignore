@@ -1,8 +1,12 @@
 # Racine C:\Users\PC : ne suivre QUE le projet Shalify.
 # Tout ignorer par defaut...
 /*
-# ...sauf le dossier du projet et ce fichier.
+# ...sauf le dossier du projet, les garde-fous, et ce fichier.
 !/.gitignore
+!/.githooks/
+!/.github/
+!/scripts/
+!/AGENT_TASKS.md
 !/Desktop/
 /Desktop/*
 !/Desktop/claude projet/

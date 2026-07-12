@@ -1,0 +1,41 @@
+#!/bin/sh
+# Garde-fou Shalify appli (racine C:\Users\PC -> shalify-mobile).
+# Empeche les fautes qui cassent le travail des agents et font perdre du temps a Ines.
+fail=0
+
+# 1) Fichier trop lourd pour git (>95 Mo) : APK/vidéo. Passe par la Release, jamais par git.
+for f in $(git diff --cached --name-only --diff-filter=AM); do
+  [ -f "$f" ] || continue
+  sz=$(wc -c < "$f" 2>/dev/null || echo 0)
+  if [ "$sz" -gt 95000000 ]; then
+    echo "STOP pre-commit: $f = $((sz/1048576)) Mo (>95 Mo). Passe-le par la Release GitHub, pas par git."
+    fail=1
+  fi
+done
+
+# 2) Commit de masse = souvent 'git add -A' qui ecrase le travail d'un autre agent.
+n=$(git diff --cached --name-only | wc -l | tr -d ' ')
+if [ "$n" -gt 60 ]; then
+  echo "STOP pre-commit: $n fichiers dans un seul commit. Commit fichier par fichier, jamais 'git add -A'."
+  fail=1
+fi
+
+# 3) Commit qui SUPPRIME massivement (une regression comme le vieux 5527f97 = -9842 lignes).
+del=$(git diff --cached --numstat 2>/dev/null | awk '{s+=$2} END {print s+0}')
+add=$(git diff --cached --numstat 2>/dev/null | awk '{s+=$1} END {print s+0}')
+if [ "$del" -gt 2000 ] && [ "$del" -gt "$((add*3))" ]; then
+  echo "STOP pre-commit: ce commit supprime $del lignes pour n'en ajouter que $add."
+  echo "   -> ca ressemble a un ecrasement/regression. Verifie avant : 'git diff --cached --stat'."
+  fail=1
+fi
+
+# 4) Interdire de commit sur main directement (publication = branche deploy/ + bouton vert).
+br=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [ "$br" = "main" ] || [ "$br" = "master" ]; then
+  echo "STOP pre-commit: on ne commit pas directement sur '$br'."
+  echo "   -> travaille sur une branche deploy/... ; la publication passe par le bouton vert GitHub."
+  fail=1
+fi
+
+[ "$fail" -ne 0 ] && echo "" && echo "Commit bloque pour proteger le travail commun d'Ines. Corrige puis recommence."
+exit $fail
