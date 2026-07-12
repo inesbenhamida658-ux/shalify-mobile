@@ -130,6 +130,8 @@ export const en = {
   booking_confirme_msg: 'Complete the payment on the Ziina page. Shalify confirms your session once received.',
   booking_login_requis: 'Sign in to book.',
   booking_lien_manuel: 'Your booking is saved. Open the Ziina page to complete payment: pay.ziina.com/Shalify',
+  live_reserver: 'Book my seat',
+  formation_acheter: 'Get this course',
   profil_partager: 'Share',
   profil_signaler: 'Report',
   signaler_titre: 'Report this profile',

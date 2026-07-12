@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { ScreenContainer, AppText, AppCard, EmptyState, ErrorState, CreatorListSkeleton, Glyph } from '../../components';
+import { ScreenContainer, AppText, AppCard, EmptyState, ErrorState, CreatorListSkeleton, Glyph, BuyButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
@@ -77,6 +77,18 @@ function FormationCard({
           <AppText variant="labelSmall" color={marked ? 'or' : 'secondary'}>{marked ? tx.marquee : tx.marquer}</AppText>
         </TouchableOpacity>
       </View>
+      {typeof f.prix === 'number' && f.prix > 0 ? (
+        <BuyButton
+          item={{
+            id: f.id,
+            titre: f.titre,
+            prix: f.prix,
+            createurNom: `${f.createurPrenom ?? ''} ${f.createurNom ?? ''}`.trim(),
+          }}
+          label={t('formation_acheter')}
+          style={{ marginTop: Spacing.md }}
+        />
+      ) : null}
     </AppCard>
   );
 }
