@@ -1,0 +1,23 @@
+# Racine C:\Users\PC : ne suivre QUE le projet Shalify.
+# Tout ignorer par defaut...
+/*
+# ...sauf le dossier du projet et ce fichier.
+!/.gitignore
+!/Desktop/
+/Desktop/*
+!/Desktop/claude projet/
+
+# A l'interieur du projet : bruit habituel
+**/node_modules/
+**/.next/
+**/.expo/
+**/.gradle/
+**/dist/
+**/build/
+**/.cache/
+**/.preview-apercu/
+**/.audit-fix-wt/
+**/.shalify-fix-wt/
+**/.claude/worktrees/
+**/*.tmp
+**/*.log

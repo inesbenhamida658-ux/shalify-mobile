@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ScreenContainer, AppText, AppCard, EmptyState, ErrorState, CreatorListSkeleton } from '../../components';
+import { ScreenContainer, AppText, AppCard, EmptyState, ErrorState, CreatorListSkeleton, BuyButton } from '../../components';
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 import { useAuth } from '../../context/AuthContext';
@@ -15,8 +15,10 @@ const styles = StyleSheet.create({
   section: { marginTop: Spacing.lg, marginBottom: Spacing.sm },
 });
 
-function LiveCard({ live, t }: { live: Live; t: (k: any) => string }) {
+function LiveCard({ live, t, aVenir }: { live: Live; t: (k: any) => string; aVenir?: boolean }) {
   const places = Math.max(0, (live.placesTotal ?? 0) - (live.placesReservees ?? 0));
+  const payant = typeof live.prix === 'number' && live.prix > 0;
+  const complet = !!live.placesTotal && places <= 0;
   return (
     <AppCard style={styles.card}>
       <View style={styles.rowTop}>
@@ -31,6 +33,18 @@ function LiveCard({ live, t }: { live: Live; t: (k: any) => string }) {
       ) : null}
       {live.placesTotal ? (
         <View style={styles.badge}><AppText variant="caption" color="secondary">{places} {t('lives_places')}</AppText></View>
+      ) : null}
+      {aVenir && payant && !complet ? (
+        <BuyButton
+          item={{
+            id: live.id,
+            titre: live.titre,
+            prix: live.prix as number,
+            createurNom: `${live.createurPrenom ?? ''} ${live.createurNom ?? ''}`.trim(),
+          }}
+          label={t('live_reserver')}
+          style={{ marginTop: Spacing.md }}
+        />
       ) : null}
     </AppCard>
   );
@@ -64,7 +78,7 @@ export function LivesScreen() {
       {!loading && error === '' && aVenir.length > 0 && (
         <>
           <AppText variant="labelSmall" color="or" style={styles.section}>{t('lives_a_venir').toUpperCase()}</AppText>
-          {aVenir.map(l => <LiveCard key={l.id} live={l} t={t} />)}
+          {aVenir.map(l => <LiveCard key={l.id} live={l} t={t} aVenir />)}
         </>
       )}
       {!loading && error === '' && passes.length > 0 && (

@@ -18,29 +18,49 @@ export function getCheckoutUrl(): string | null {
   return null;
 }
 
+// Item payant générique (live, formation, produit) quand il n'y a pas de couple
+// créateur/service classique. Sert à brancher le paiement sur tout contenu vendable.
+export interface ItemPayant {
+  id: string;
+  titre: string;
+  prix: number | string;
+  createurNom?: string;
+  createurEmail?: string;
+  createurId?: string;
+}
+
 // Enregistre la réservation puis ouvre la page de paiement du fournisseur.
 // La réservation est best-effort: même si elle échoue, on laisse le client payer.
+// Accepte soit un couple creator/service, soit un item payant générique.
 export async function startCheckout(params: {
-  creator: Creator;
-  service: Service;
+  creator?: Creator;
+  service?: Service;
+  item?: ItemPayant;
   user: User;
   message?: string;
   token?: string;
 }): Promise<CheckoutResult> {
-  const { creator, service, user, message, token } = params;
+  const { creator, service, item, user, message, token } = params;
+
+  // Normalise vers un jeu de champs commun (titre, prix, créateur).
+  const titre = item?.titre ?? service?.titre ?? service?.nom ?? '';
+  const prix = String(item?.prix ?? service?.prix ?? service?.tarif ?? '');
+  const createurNom = item?.createurNom ?? (creator ? `${creator.prenom} ${creator.nom}`.trim() : 'Shalify');
+  const createurEmail = item?.createurEmail ?? creator?.email ?? '';
+  const profilId = item?.createurId ?? creator?.id ?? item?.id ?? '';
 
   let reservationEnregistree = false;
   try {
     const res = await createReservation(
       {
-        profilId: creator.id,
-        createurEmail: creator.email ?? '',
-        createurNom: `${creator.prenom} ${creator.nom}`.trim(),
+        profilId,
+        createurEmail,
+        createurNom,
         clientPrenom: user.prenom ?? '',
         clientEmail: user.email,
         clientMessage: message ?? '',
-        serviceTitle: service.titre ?? service.nom,
-        servicePrix: String(service.prix ?? service.tarif ?? ''),
+        serviceTitle: titre,
+        servicePrix: prix,
       },
       token
     );
@@ -52,9 +72,9 @@ export async function startCheckout(params: {
   // Trace locale de la demande (Ma bibliothèque). Best-effort, jamais bloquant.
   try {
     await addPurchase({
-      creatorNom: `${creator.prenom} ${creator.nom}`.trim(),
-      serviceTitre: service.titre ?? service.nom,
-      prix: String(service.prix ?? service.tarif ?? ''),
+      creatorNom: createurNom,
+      serviceTitre: titre,
+      prix,
     });
   } catch { /* ignore */ }
 

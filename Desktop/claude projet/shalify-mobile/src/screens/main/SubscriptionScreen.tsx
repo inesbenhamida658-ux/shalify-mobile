@@ -4,7 +4,7 @@ import { ScreenContainer, AppText, AppCard, AppButton, Glyph } from '../../compo
 import { Colors, Spacing, Radius } from '../../theme';
 import { useLang } from '../../context/LangContext';
 
-const LIEN = 'https://shalify.app/cercle';
+const LIEN = 'https://shalify.app/cercle-shalify';
 
 const styles = StyleSheet.create({
   hero: { backgroundColor: Colors.vertTF, borderRadius: Radius.lg, padding: Spacing.xl, marginBottom: Spacing.lg, alignItems: 'center' },

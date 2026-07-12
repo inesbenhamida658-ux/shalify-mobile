@@ -11,6 +11,7 @@ export { LoadingState } from './LoadingState';
 export { EmptyState } from './EmptyState';
 export { ErrorState } from './ErrorState';
 export { CheckoutButton } from './CheckoutButton';
+export { BuyButton } from './BuyButton';
 export { FavoriteButton } from './FavoriteButton';
 export { VideoPlayer } from './VideoPlayer';
 export { CreatorVideoPreview } from './CreatorVideoPreview';
