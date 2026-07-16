@@ -366,6 +366,22 @@ export function HomeScreen() {
         </AppText>
       </AppCard>
 
+      {/* Bannière Ensemble : les onze façons de se relier, chaque jour */}
+      <AppCard
+        style={{ marginTop: Spacing.md, borderWidth: 1, borderColor: Colors.or, backgroundColor: Colors.creme }}
+        onPress={() => (navigation as any).navigate('Ensemble')}
+      >
+        <AppText variant="labelSmall" color="or">
+          {(lang === 'en' ? 'Together' : lang === 'ar' ? 'معًا' : 'Ensemble').toUpperCase()}
+        </AppText>
+        <AppText variant="h3" style={{ marginTop: Spacing.xs }}>
+          {lang === 'en' ? 'Connect, every day' : lang === 'ar' ? 'ترابط، كل يوم' : 'Se relier, chaque jour'}
+        </AppText>
+        <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>
+          {lang === 'en' ? 'Your feeling, the evening ritual, the anchor duo, and more.' : lang === 'ar' ? 'شعورك، طقس المساء، ثنائي الأيام، والمزيد.' : 'Votre ressenti, le rituel du soir, le duo d’ancrage, et plus.'}
+        </AppText>
+      </AppCard>
+
       {profilRappel && (
         <AppCard style={{ marginTop: Spacing.md, borderWidth: 1.5, borderColor: Colors.or }} onPress={() => (navigation as any).navigate('Test')}>
           <AppText variant="labelSmall" color="or">{t('home_test_rappel').toUpperCase()}</AppText>

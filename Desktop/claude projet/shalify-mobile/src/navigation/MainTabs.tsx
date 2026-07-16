@@ -50,6 +50,7 @@ import { ThankYouScreen } from '../screens/main/ThankYouScreen';
 import { GratitudesScreen } from '../screens/main/GratitudesScreen';
 import { HistoireScreen } from '../screens/main/HistoireScreen';
 import { BoutiqueScreen } from '../screens/main/BoutiqueScreen';
+import { EnsembleScreen } from '../screens/main/EnsembleScreen';
 import { OnboardingScreen } from '../screens/main/OnboardingScreen';
 import { hasSeenOnboarding } from '../services/douceur';
 import { Colors } from '../theme';
@@ -116,6 +117,7 @@ export type MainStackParamList = {
   Gratitudes: undefined;
   Histoire: undefined;
   Boutique: undefined;
+  Ensemble: undefined;
 };
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -216,6 +218,7 @@ export function MainTabs() {
       <MainStack.Screen name="Gratitudes" component={GratitudesScreen} options={detailOptions} />
       <MainStack.Screen name="Histoire" component={HistoireScreen} options={detailOptions} />
       <MainStack.Screen name="Boutique" component={BoutiqueScreen} options={detailOptions} />
+      <MainStack.Screen name="Ensemble" component={EnsembleScreen} options={detailOptions} />
     </MainStack.Navigator>
   );
 }
