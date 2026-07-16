@@ -63,7 +63,7 @@ export function MessagesScreen() {
                     <View style={styles.avatar}>
                       <AppText variant="h3" color="or">{(item.prenom || '?').charAt(0).toUpperCase()}</AppText>
                     </View>
-                    <AppText variant="label">{item.prenom || '—'}</AppText>
+                    <AppText variant="label">{item.prenom || 'Contact'}</AppText>
                   </View>
                   <AppText variant="label" color="or">→</AppText>
                 </View>

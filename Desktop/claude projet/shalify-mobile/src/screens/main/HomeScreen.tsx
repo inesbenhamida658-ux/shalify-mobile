@@ -350,6 +350,22 @@ export function HomeScreen() {
 
       <StatsBand lang={lang} />
 
+      {/* Bannière À découvrir : la Boutique (même esprit que le site) */}
+      <AppCard
+        style={{ marginTop: Spacing.md, borderWidth: 1, borderColor: Colors.or, backgroundColor: Colors.creme }}
+        onPress={() => (navigation as any).navigate('Boutique')}
+      >
+        <AppText variant="labelSmall" color="or">
+          {(lang === 'en' ? 'To discover' : lang === 'ar' ? 'لتكتشف' : 'À découvrir').toUpperCase()}
+        </AppText>
+        <AppText variant="h3" style={{ marginTop: Spacing.xs }}>
+          {lang === 'en' ? 'The Shop, all of Shalify' : lang === 'ar' ? 'المتجر، كل شاليفاي' : 'La Boutique, tout Shalify'}
+        </AppText>
+        <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>
+          {lang === 'en' ? 'Living portraits, the Circle, and your first step offered.' : lang === 'ar' ? 'صور حيّة، والدائرة، وخطوتك الأولى هدية.' : 'Les portraits vivants, le Cercle, et ton premier pas offert.'}
+        </AppText>
+      </AppCard>
+
       {profilRappel && (
         <AppCard style={{ marginTop: Spacing.md, borderWidth: 1.5, borderColor: Colors.or }} onPress={() => (navigation as any).navigate('Test')}>
           <AppText variant="labelSmall" color="or">{t('home_test_rappel').toUpperCase()}</AppText>

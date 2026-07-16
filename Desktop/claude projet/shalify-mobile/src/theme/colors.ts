@@ -1,6 +1,6 @@
 export const Colors = {
   // Palette Shalify — charte validée (DESIGN-SHALIFY-VALIDE.md)
-  creme: '#FAF6EE',
+  creme: '#F1F5EF',
   creme2: '#F3EEE1',
   cremeF: '#F3EEE1',
   vert: '#3D6B4F',
@@ -22,7 +22,7 @@ export const Colors = {
   // Overlays
   overlay: 'rgba(28,42,32,0.6)',
   // Fond écrans
-  fond: '#FAF6EE',
+  fond: '#F1F5EF',
   fondCard: '#FFFFFF',
 } as const;
 

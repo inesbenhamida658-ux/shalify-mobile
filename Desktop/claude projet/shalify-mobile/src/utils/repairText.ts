@@ -14,7 +14,7 @@ export function repairText(s?: string): string {
     )
     .replace(
       'Une premi�re rencontre collective pour d�couvrir SHALIFY, ses valeurs et comment partager votre talent avec le monde. Session ouverte � tous, anim�e par In�s Ben Hamida, fondatrice et coach PNL.',
-      'Une première rencontre collective pour découvrir SHALIFY, ses valeurs et comment partager votre talent avec le monde. Session ouverte à tous, animée par Inès Ben Hamida, fondatrice et coach PNL.',
+      'Une première rencontre collective pour découvrir SHALIFY, ses valeurs et comment partager votre talent avec le monde. Session ouverte à tous, animée par la fondatrice, coach PNL.',
     )
     .replace(/In�s/g, 'Inès')
     .replace(/Premi�re/g, 'Première')
