@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/PC/Desktop/claude projet/shalify/scripts/deja-fait.mjs\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/PC/Desktop/claude projet/shalify/scripts/deja-fait.mjs\""
+          }
+        ]
+      }
+    ]
+  }
+}
