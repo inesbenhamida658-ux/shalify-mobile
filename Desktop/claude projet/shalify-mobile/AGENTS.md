@@ -19,3 +19,19 @@ Problème constaté : les agents se renvoient les mêmes tâches et listent comm
 3. **Ne jamais recopier la liste d'un autre agent sans revérifier chaque ligne dans le code.** Le code est la seule vérité ; les `.md` de suivi mentent souvent.
 4. **Une seule source de vérité par tâche.** Signale les doublons au lieu de les propager.
 5. **Distinguer « écran existe » et « écran branché à un vrai backend ».** Un écran qui affiche une façade sans système derrière n'est PAS une tâche faite : marque-le ⚠️ à moitié.
+
+---
+
+## 📅 AGENDA — 100 fonctions ajoutées côté serveur le 2026-07-18 (à refléter dans l'écran mobile)
+> Le site a reçu un agenda de réservation complet. L'appli tape sur le MÊME backend (`ENV.API_BASE_URL = https://shalify.app`, voir `src/config/env.ts:4`), donc TOUT est déjà disponible sans changement serveur. Il reste à enrichir l'écran natif `src/screens/main/AgendaScreen.tsx` + `src/services/agenda.ts` pour AFFICHER ces fonctions au prochain build APK.
+
+Nouveautés serveur exploitables depuis l'appli (via `/api/agenda`) :
+- Réservation renvoie une **référence** + statut (confirmée / en attente / liste d'attente) ; verrou anti-double-réservation côté serveur.
+- Actions POST supplémentaires : annuler, reporter, rejoindre la liste d'attente, favoris, offrir à quelqu'un.
+- Créneaux enrichis : modalité **visio / présentiel / téléphone**, langue d'échange, fuseau horaire, durée, tarif, capacité groupe.
+- Côté créateur : tableau des rdv, confirmer/refuser, honoré/absent, notes privées, stats, revenus prévisionnels, export.
+- Rappels automatiques J-1 / H-2 (crons serveur) + push VAPID déjà en place.
+- Page d'aide web : https://shalify.app/agenda/aide (fr/en/ar/es).
+- Cœur métier partagé : `../shalify/lib/agenda.ts` (types Reservation/Creneau étendus), route `../shalify/app/api/agenda/route.ts`.
+
+À faire côté appli (ne PAS recréer le backend) : afficher la référence après réservation, la modalité, le statut, permettre annuler/reporter, montrer l'historique et les favoris. Vérifie d'abord `AgendaScreen.tsx` + `agenda.ts` avant d'ajouter (une partie peut déjà y être).
