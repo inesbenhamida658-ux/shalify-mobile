@@ -71,6 +71,76 @@ export function SettingsScreen() {
   const open = (path: string) => { Linking.openURL(`https://shalify.app/${path}`).catch(() => {}); };
   const journalLabel = lang === 'en' ? 'My journal' : lang === 'ar' ? 'مذكراتي' : 'Mon journal';
 
+  // Libellés trilingues des nouveaux espaces (fidèles aux pages du site).
+  const L = (fr: string, en: string, ar: string) => (lang === 'en' ? en : lang === 'ar' ? ar : fr);
+
+  const groupeGagner: [string, string][] = [
+    ['GagnerSurShalify', L('Gagner sur Shalify', 'Earn on Shalify', 'اكسب على شاليفي')],
+    ['MesRevenus', L('Mes revenus', 'My earnings', 'أرباحي')],
+    ['MesRecus', L('Mes reçus', 'My receipts', 'إيصالاتي')],
+    ['SuggestionPrix', L('Suggestion de prix', 'Price suggestion', 'اقتراح السعر')],
+    ['ReformulerOffre', L('Reformuler mon offre', 'Rephrase my offer', 'إعادة صياغة عرضي')],
+    ['BoosterProfil', L('Booster mon profil', 'Boost my profile', 'تعزيز ملفّي')],
+    ['PremiumCreateur', L('Premium créateur', 'Creator premium', 'بريميوم للمبدع')],
+    ['VivreEtVendre', L('Vivre et vendre', 'Live and sell', 'أن تعيش وتبيع')],
+  ];
+  const groupeCommunaute: [string, string][] = [
+    ['Feed', L('Le feed', 'The feed', 'الخلاصة')],
+    ['Stories', L('Stories du jour', 'Today’s stories', 'قصص اليوم')],
+    ['Communaute', L('La communauté', 'The community', 'المجتمع')],
+    ['SalonVocal', L('Salon vocal', 'Voice room', 'صالون صوتي')],
+    ['CercleAudio', L('Cercle audio', 'Audio circle', 'دائرة صوتية')],
+    ['MicroLive', L('Micro-live', 'Micro-live', 'بثّ قصير')],
+    ['Ambassadeurs', L('Ambassadeurs', 'Ambassadors', 'السفراء')],
+    ['Mentorat', L('Mentorat', 'Mentoring', 'الإرشاد')],
+    ['Equipes', L('Créer une équipe', 'Create a team', 'إنشاء فريق')],
+  ];
+  const groupeRituels: [string, string][] = [
+    ['Annee2026', L('Mon année 2026', 'My year 2026', 'عامي 2026')],
+    ['LettreAuFutur', L('Lettre à mon futur moi', 'Letter to my future self', 'رسالة إلى ذاتي المستقبلية')],
+    ['VisionBoard', L('Mon tableau de vision', 'My vision board', 'لوحة رؤيتي')],
+    ['MurIntentions', L('Le mur d’intentions', 'The intention wall', 'جدار النيّات')],
+    ['MiroirDuJour', L('Le miroir du jour', 'The mirror of the day', 'مرآة اليوم')],
+    ['MeteoInterieure', L('Ma météo intérieure', 'My inner weather', 'طقسي الداخلي')],
+    ['Numerologie', L('Numérologie', 'Numerology', 'علم الأعداد')],
+    ['VibrationPrenom', L('Vibration du prénom', 'Name vibration', 'اهتزاز الاسم')],
+    ['Chronotype', L('Mon chronotype', 'My chronotype', 'نمطي الزمني')],
+    ['BoussoleValeurs', L('Ma boussole des valeurs', 'My values compass', 'بوصلة قيمي')],
+    ['VoyageInterieur', L('Voyage intérieur', 'Inner journey', 'رحلة داخلية')],
+    ['Refuge', L('Mon refuge', 'My refuge', 'ملاذي')],
+    ['AutoHypnose', L('Auto-hypnose', 'Self-hypnosis', 'التنويم الذاتي')],
+    ['JournalVocal', L('Mon journal vocal', 'My voice journal', 'يومياتي الصوتية')],
+  ];
+  const groupeRelier: [string, string][] = [
+    ['ShalifyConnect', L('Shalify Connect', 'Shalify Connect', 'شاليفي كونكت')],
+    ['ResonanceProfonde', L('Résonance profonde', 'Deep resonance', 'رنين عميق')],
+    ['BriseGlace', L('Brise-glace', 'Icebreaker', 'كاسر الجليد')],
+    ['Duo21Jours', L('Duo 21 jours', 'Duo 21 days', 'ثنائي 21 يومًا')],
+    ['DuoAncrage', L('Duo ancrage', 'Anchor duo', 'ثنائي التجذّر')],
+    ['GratitudeADeux', L('Gratitude à deux', 'Gratitude for two', 'امتنان لاثنين')],
+  ];
+  const groupeAide: [string, string][] = [
+    ['CommentCaMarche', L('Comment ça marche', 'How it works', 'كيف يعمل')],
+    ['PremiersPas', L('Mes premiers pas', 'My first steps', 'خطواتي الأولى')],
+    ['Faq', L('Questions fréquentes', 'Frequent questions', 'أسئلة متكرّرة')],
+    ['Contact', L('Nous contacter', 'Contact us', 'اتصل بنا')],
+    ['PlanDuSite', L('Plan du site', 'Site map', 'خريطة الموقع')],
+  ];
+  const renderGroup = (titre: string, items: [string, string][]) => (
+    <AppCard style={{ marginBottom: Spacing.lg }}>
+      <AppText variant="h3" style={{ marginBottom: Spacing.sm }}>{titre}</AppText>
+      {items.map(([route, label], i) => (
+        <AppButton
+          key={route}
+          label={label}
+          onPress={() => navigation.navigate(route)}
+          variant="outline"
+          style={i < items.length - 1 ? { marginBottom: Spacing.sm } : undefined}
+        />
+      ))}
+    </AppCard>
+  );
+
   return (
     <ScreenContainer>
       <AppText variant="h2" style={{ marginBottom: Spacing.xl }}>{t('settings_titre')}</AppText>
@@ -132,6 +202,12 @@ export function SettingsScreen() {
         <AppButton label={t('settings_offrir')} onPress={() => navigation.navigate('Offrir')} variant="outline" style={{ marginBottom: Spacing.sm }} />
         <AppButton label={t('settings_packs')} onPress={() => navigation.navigate('Packs')} variant="outline" />
       </AppCard>
+
+      {renderGroup(L('Gagner sur Shalify', 'Earn on Shalify', 'اكسب على شاليفي'), groupeGagner)}
+      {renderGroup(L('Communauté & lives', 'Community & lives', 'المجتمع والبثوث'), groupeCommunaute)}
+      {renderGroup(L('Mes rituels', 'My rituals', 'طقوسي'), groupeRituels)}
+      {renderGroup(L('Se relier', 'Connect', 'التواصل'), groupeRelier)}
+      {renderGroup(L('Aide', 'Help', 'مساعدة'), groupeAide)}
 
       <AppCard style={{ marginBottom: Spacing.lg }}>
         <AppText variant="h3" style={{ marginBottom: Spacing.sm }}>{t('settings_langue')}</AppText>
