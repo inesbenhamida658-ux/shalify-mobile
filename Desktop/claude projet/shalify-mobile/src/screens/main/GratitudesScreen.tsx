@@ -10,7 +10,7 @@ import { getGratitude, type GratitudeEntry } from '../../services/rituel';
 // Le journal de gratitude est déjà tenu dans le rituel : ici on le relit,
 // en douceur, chaque note posée comme une carte à savourer.
 const TXT: Record<string, { titre: string; sous: string; vide: string; label: string }> = {
-  fr: { titre: 'Ma boîte à gratitudes', sous: 'Relis ce qui a réchauffé ton cœur.', vide: 'Tes gratitudes t’attendront ici, dès la première.', label: 'GRATITUDE' },
+  fr: { titre: 'Ma boîte à gratitudes', sous: 'Relisez ce qui a réchauffé votre cœur.', vide: 'Vos gratitudes vous attendront ici, dès la première.', label: 'GRATITUDE' },
   en: { titre: 'My gratitude box', sous: 'Read again what warmed your heart.', vide: 'Your gratitudes will wait here, from the very first.', label: 'GRATITUDE' },
   ar: { titre: 'صندوق امتناني', sous: 'أعد قراءة ما أدفأ قلبك.', vide: 'ستنتظرك امتنانَاتُك هنا، من الأولى.', label: 'امتنان' },
 };

@@ -10,13 +10,13 @@ import { ENV } from '../../config/env';
 type Rubrique = { nom: string; rubrique: string; image: string; exemples: string; accroche: string };
 
 const RUBRIQUES: Rubrique[] = [
-  { nom: 'Compétences', rubrique: 'Compétences', image: '/rubrique-competences.jpg', exemples: 'Avocats · Experts · Architectes · Ingénieurs · Consultants', accroche: 'Ton savoir atteint les personnes qui en ont besoin, partout dans le monde.' },
-  { nom: 'Artisanat & Création', rubrique: 'Artisanat & Création', image: '/rubrique-artisanat.jpg', exemples: 'Cuisiniers · Artistes · Couturiers · Musiciens · Photographes', accroche: 'Tes créations uniques atteignent ceux qui les cherchent vraiment.' },
-  { nom: 'Transformation', rubrique: 'Transformation', image: '/rubrique-transformation.jpg', exemples: 'Accompagnants certifiés · Praticiens · Yoga · Méditation · Évolution personnelle', accroche: 'Un accompagnement existe pour exactement là où tu en es.' },
-  { nom: 'Savoirs', rubrique: 'Savoirs', image: '/rubrique-savoirs.jpg', exemples: 'Formations · Audios · Livres · Masterclasses · Programmes', accroche: 'Tu enregistres une fois. Des centaines de personnes vivent la transformation.' },
-  { nom: 'Lives', rubrique: 'Lives', image: '/rubrique-lives.jpg', exemples: 'Sessions collectives · Ateliers · Conférences · Cercles', accroche: 'Le vivant est irremplaçable. Sois là où tout se passe en ce moment.' },
-  { nom: 'Shalify Connect', rubrique: 'Résonance', image: '/rubrique-connexion.jpg', exemples: 'Matching par valeurs · Profils vérifiés · Connexions sincères', accroche: 'La connexion sincère commence ici. Le matching se fait sur qui tu es vraiment.' },
-  { nom: 'Autres talents & savoir-faire', rubrique: 'Autres talents & savoir-faire', image: '/rubrique-autres.jpg', exemples: 'Mères · Retraités · Jardiniers · Mécaniciens · Autodidactes · Passionnés', accroche: 'Ton expérience vécue est ta plus grande qualification. Partage ce que tu maîtrises vraiment.' },
+  { nom: 'Compétences', rubrique: 'Compétences', image: '/rubrique-competences.jpg', exemples: 'Avocats · Experts · Architectes · Ingénieurs · Consultants', accroche: 'Votre savoir atteint les personnes qui en ont besoin, partout dans le monde.' },
+  { nom: 'Artisanat & Création', rubrique: 'Artisanat & Création', image: '/rubrique-artisanat.jpg', exemples: 'Cuisiniers · Artistes · Couturiers · Musiciens · Photographes', accroche: 'Vos créations uniques atteignent ceux qui les cherchent vraiment.' },
+  { nom: 'Transformation', rubrique: 'Transformation', image: '/rubrique-transformation.jpg', exemples: 'Accompagnants certifiés · Praticiens · Yoga · Méditation · Évolution personnelle', accroche: 'Un accompagnement existe pour exactement là où vous en êtes.' },
+  { nom: 'Savoirs', rubrique: 'Savoirs', image: '/rubrique-savoirs.jpg', exemples: 'Formations · Audios · Livres · Masterclasses · Programmes', accroche: 'Vous enregistrez une fois. Des centaines de personnes vivent la transformation.' },
+  { nom: 'Lives', rubrique: 'Lives', image: '/rubrique-lives.jpg', exemples: 'Sessions collectives · Ateliers · Conférences · Cercles', accroche: 'Le vivant est irremplaçable. Soyez là où tout se passe en ce moment.' },
+  { nom: 'Shalify Connect', rubrique: 'Résonance', image: '/rubrique-connexion.jpg', exemples: 'Matching par valeurs · Profils vérifiés · Connexions sincères', accroche: 'La connexion sincère commence ici. Le matching se fait sur qui vous êtes vraiment.' },
+  { nom: 'Autres talents & savoir-faire', rubrique: 'Autres talents & savoir-faire', image: '/rubrique-autres.jpg', exemples: 'Mères · Retraités · Jardiniers · Mécaniciens · Autodidactes · Passionnés', accroche: 'Votre expérience vécue est votre plus grande qualification. Partagez ce que vous maîtrisez vraiment.' },
 ];
 
 const styles = StyleSheet.create({

@@ -290,7 +290,7 @@ export function HomeScreen() {
 
   // Message doux du rappel (opt-in). Change chaque jour, jamais pressant.
   const RAPPEL_MSG: Record<string, string[]> = {
-    fr: ['Ravie de te revoir. Prends un instant pour toi aujourd’hui.', 'Ta présence compte. Respire, tout doucement.', 'Un petit pas suffit. Tu es exactement là où il faut.'],
+    fr: ['Ravie de vous revoir. Prenez un instant pour vous aujourd’hui.', 'Votre présence compte. Respirez, tout doucement.', 'Un petit pas suffit. Vous êtes exactement là où il faut.'],
     en: ['Glad to see you again. Take a moment for yourself today.', 'Your presence matters. Breathe, very gently.', 'One small step is enough. You are exactly where you need to be.'],
     ar: ['سعيدة برؤيتك من جديد. خذ لحظة لنفسك اليوم.', 'حضورك مهمّ. تنفّس بلطف شديد.', 'خطوة صغيرة تكفي. أنت تماماً حيث يجب أن تكون.'],
   };
@@ -362,7 +362,7 @@ export function HomeScreen() {
           {lang === 'en' ? 'The Shop, all of Shalify' : lang === 'ar' ? 'المتجر، كل شاليفاي' : 'La Boutique, tout Shalify'}
         </AppText>
         <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>
-          {lang === 'en' ? 'Living portraits, the Circle, and your first step offered.' : lang === 'ar' ? 'صور حيّة، والدائرة، وخطوتك الأولى هدية.' : 'Les portraits vivants, le Cercle, et ton premier pas offert.'}
+          {lang === 'en' ? 'Living portraits, the Circle, and your first step offered.' : lang === 'ar' ? 'صور حيّة، والدائرة، وخطوتك الأولى هدية.' : 'Les portraits vivants, le Cercle, et votre premier pas offert.'}
         </AppText>
       </AppCard>
 
@@ -379,6 +379,22 @@ export function HomeScreen() {
         </AppText>
         <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>
           {lang === 'en' ? 'Your feeling, the evening ritual, the anchor duo, and more.' : lang === 'ar' ? 'شعورك، طقس المساء، ثنائي الأيام، والمزيد.' : 'Votre ressenti, le rituel du soir, le duo d’ancrage, et plus.'}
+        </AppText>
+      </AppCard>
+
+      {/* Bannière Agenda : réserver un créneau avec un créateur (même backend que le site) */}
+      <AppCard
+        style={{ marginTop: Spacing.md, borderWidth: 1, borderColor: Colors.or, backgroundColor: Colors.creme }}
+        onPress={() => (navigation as any).navigate('Agenda')}
+      >
+        <AppText variant="labelSmall" color="or">
+          {(lang === 'en' ? 'Agenda' : lang === 'ar' ? 'الأجندة' : 'Agenda').toUpperCase()}
+        </AppText>
+        <AppText variant="h3" style={{ marginTop: Spacing.xs }}>
+          {lang === 'en' ? 'Book your slot' : lang === 'ar' ? 'احجز خانتك' : 'Réservez votre créneau'}
+        </AppText>
+        <AppText variant="bodySmall" color="secondary" style={{ marginTop: 2 }}>
+          {lang === 'en' ? 'Pick a creator, choose a free slot, confirmation by email.' : lang === 'ar' ? 'اختر مبدعًا، اختر خانة متاحة، التأكيد عبر البريد.' : 'Choisissez un créateur, un créneau libre, confirmation par email.'}
         </AppText>
       </AppCard>
 

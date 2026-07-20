@@ -18,9 +18,9 @@ const DOUCEUR_TXT: Record<string, {
     titre: 'Douceur',
     rappelTitre: 'Rappel doux du jour', rappelSous: 'Un mot tendre à l’ouverture, une fois par jour.',
     actif: 'Activé', inactif: 'Activer',
-    exportTitre: 'Ma sauvegarde', exportSous: 'Garde tes gratitudes et victoires en un fichier.',
+    exportTitre: 'Ma sauvegarde', exportSous: 'Gardez vos gratitudes et victoires en un fichier.',
     exportBtn: 'Télécharger ma sauvegarde',
-    okDl: 'Ta sauvegarde est téléchargée.', okCopy: 'Ta sauvegarde est copiée.', okShare: 'Ta sauvegarde est prête à partager.', err: 'Réessaie dans un instant.',
+    okDl: 'Votre sauvegarde est téléchargée.', okCopy: 'Votre sauvegarde est copiée.', okShare: 'Votre sauvegarde est prête à partager.', err: 'Réessayez dans un instant.',
   },
   en: {
     titre: 'Gentleness',

@@ -11,7 +11,7 @@ interface Entry { id: string; texte: string; date: string; }
 
 // Textes en ligne (zéro dépendance i18n → aucun conflit avec les autres agents).
 const TXT: Record<string, { titre: string; sous: string; ph: string; save: string; vide: string }> = {
-  fr: { titre: 'Mon journal', sous: 'Note ce qui compte pour toi aujourd’hui', ph: 'Aujourd’hui, je ressens…', save: 'Enregistrer', vide: 'Tes notes apparaîtront ici' },
+  fr: { titre: 'Mon journal', sous: 'Notez ce qui compte pour vous aujourd’hui', ph: 'Aujourd’hui, je ressens…', save: 'Enregistrer', vide: 'Vos notes apparaîtront ici' },
   en: { titre: 'My journal', sous: 'Write what matters to you today', ph: 'Today, I feel…', save: 'Save', vide: 'Your notes will appear here' },
   ar: { titre: 'مذكراتي', sous: 'اكتب ما يهمّك اليوم', ph: '…اليوم، أشعر', save: 'حفظ', vide: 'ستظهر ملاحظاتك هنا' },
 };

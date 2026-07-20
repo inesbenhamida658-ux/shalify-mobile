@@ -32,9 +32,9 @@ const TXT: Record<string, Contenu> = {
     valeursTitre: 'Nos valeurs fondatrices',
     valeurs: [
       { titre: 'Sincérité', texte: 'Des profils vrais, des connexions qui reposent sur qui l’on est vraiment.' },
-      { titre: 'Douceur', texte: 'Une expérience qui apaise, jamais pressante, toujours respectueuse de ton rythme.' },
+      { titre: 'Douceur', texte: 'Une expérience qui apaise, jamais pressante, toujours respectueuse de votre rythme.' },
       { titre: 'Valeur partagée', texte: 'Le créateur reste au cœur : sa juste part lui revient, son savoir circule.' },
-      { titre: 'Ancrage', texte: 'Tout reste chez toi, en local, sans dépendance. Ta tranquillité d’abord.' },
+      { titre: 'Ancrage', texte: 'Tout reste chez vous, en local, sans dépendance. Votre tranquillité d’abord.' },
     ],
     visionTitre: 'Là où nous allons',
     vision: 'Faire de Shalify un lieu qui grandit avec ses membres, où chaque talent trouve sa place et où la rencontre garde toute sa chaleur.',

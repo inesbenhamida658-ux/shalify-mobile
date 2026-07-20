@@ -27,10 +27,10 @@ const UNIVERS: Univers[] = [
   {
     cle: 'se-reveler',
     titre: 'Se révéler',
-    phrase: 'Les portraits vivants qui mettent des mots justes sur toi.',
+    phrase: 'Les portraits vivants qui mettent des mots justes sur vous.',
     cartes: [
       { titre: 'Compatibilité', resume: 'La résonance entre deux prénoms, deux élans.', prix: '19', route: 'Compatibility' },
-      { titre: 'Guidance du Mois', resume: 'Ton éclairage renouvelé chaque mois.', prix: '19 par mois', route: 'Guidance' },
+      { titre: 'Guidance du Mois', resume: 'Votre éclairage renouvelé chaque mois.', prix: '19 par mois', route: 'Guidance' },
     ],
   },
   {
@@ -44,7 +44,7 @@ const UNIVERS: Univers[] = [
   {
     cle: 'transmettre',
     titre: 'Transmettre',
-    phrase: 'Les leviers qui mettent ton talent sous la plus belle lumière.',
+    phrase: 'Les leviers qui mettent votre talent sous la plus belle lumière.',
     cartes: [
       { titre: 'Packs créateur', resume: 'Trois créations réunies à prix doux.', prix: 'Plusieurs formules', route: 'Packs' },
     ],

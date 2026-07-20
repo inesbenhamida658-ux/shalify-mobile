@@ -6,8 +6,8 @@ import { Spacing } from '../../theme';
 const LIEN = 'https://shalify.app/offrir';
 
 const ETAPES = [
-  { titre: 'Choisis une expérience', texte: 'Une création, une séance ou un moment Shalify qui fera plaisir à la personne que tu aimes.' },
-  { titre: 'Ajoute un mot doux', texte: 'Un message personnel accompagne ton cadeau et rend l’attention encore plus belle.' },
+  { titre: 'Choisissez une expérience', texte: 'Une création, une séance ou un moment Shalify qui fera plaisir à la personne que vous aimez.' },
+  { titre: 'Ajoutez un mot doux', texte: 'Un message personnel accompagne votre cadeau et rend l’attention encore plus belle.' },
   { titre: 'La personne en profite', texte: 'Elle reçoit son accès et vit l’expérience quand elle le souhaite, à son rythme.' },
 ];
 
