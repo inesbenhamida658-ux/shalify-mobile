@@ -52,6 +52,48 @@ import { HistoireScreen } from '../screens/main/HistoireScreen';
 import { BoutiqueScreen } from '../screens/main/BoutiqueScreen';
 import { EnsembleScreen } from '../screens/main/EnsembleScreen';
 import { AgendaScreen } from '../screens/main/AgendaScreen';
+import { MesRevenusScreen } from '../screens/main/MesRevenusScreen';
+import { MesRecusScreen } from '../screens/main/MesRecusScreen';
+import { PremiumCreateurScreen } from '../screens/main/PremiumCreateurScreen';
+import { SuggestionPrixScreen } from '../screens/main/SuggestionPrixScreen';
+import { ReformulerOffreScreen } from '../screens/main/ReformulerOffreScreen';
+import { BoosterProfilScreen } from '../screens/main/BoosterProfilScreen';
+import { GagnerSurShalifyScreen } from '../screens/main/GagnerSurShalifyScreen';
+import { VivreEtVendreScreen } from '../screens/main/VivreEtVendreScreen';
+import { FeedScreen } from '../screens/main/FeedScreen';
+import { StoriesScreen } from '../screens/main/StoriesScreen';
+import { CommunauteScreen } from '../screens/main/CommunauteScreen';
+import { SalonVocalScreen } from '../screens/main/SalonVocalScreen';
+import { CercleAudioScreen } from '../screens/main/CercleAudioScreen';
+import { MicroLiveScreen } from '../screens/main/MicroLiveScreen';
+import { AmbassadeursScreen } from '../screens/main/AmbassadeursScreen';
+import { MentoratScreen } from '../screens/main/MentoratScreen';
+import { EquipesScreen } from '../screens/main/EquipesScreen';
+import { Annee2026Screen } from '../screens/main/Annee2026Screen';
+import { LettreAuFuturScreen } from '../screens/main/LettreAuFuturScreen';
+import { VisionBoardScreen } from '../screens/main/VisionBoardScreen';
+import { MurIntentionsScreen } from '../screens/main/MurIntentionsScreen';
+import { MiroirDuJourScreen } from '../screens/main/MiroirDuJourScreen';
+import { MeteoInterieureScreen } from '../screens/main/MeteoInterieureScreen';
+import { NumerologieScreen } from '../screens/main/NumerologieScreen';
+import { VibrationPrenomScreen } from '../screens/main/VibrationPrenomScreen';
+import { ChronotypeScreen } from '../screens/main/ChronotypeScreen';
+import { BoussoleValeursScreen } from '../screens/main/BoussoleValeursScreen';
+import { VoyageInterieurScreen } from '../screens/main/VoyageInterieurScreen';
+import { RefugeScreen } from '../screens/main/RefugeScreen';
+import { AutoHypnoseScreen } from '../screens/main/AutoHypnoseScreen';
+import { JournalVocalScreen } from '../screens/main/JournalVocalScreen';
+import { ShalifyConnectScreen } from '../screens/main/ShalifyConnectScreen';
+import { ResonanceProfondeScreen } from '../screens/main/ResonanceProfondeScreen';
+import { BriseGlaceScreen } from '../screens/main/BriseGlaceScreen';
+import { Duo21JoursScreen } from '../screens/main/Duo21JoursScreen';
+import { DuoAncrageScreen } from '../screens/main/DuoAncrageScreen';
+import { GratitudeADeuxScreen } from '../screens/main/GratitudeADeuxScreen';
+import { FaqScreen } from '../screens/main/FaqScreen';
+import { ContactScreen } from '../screens/main/ContactScreen';
+import { PlanDuSiteScreen } from '../screens/main/PlanDuSiteScreen';
+import { CommentCaMarcheScreen } from '../screens/main/CommentCaMarcheScreen';
+import { PremiersPasScreen } from '../screens/main/PremiersPasScreen';
 import { OnboardingScreen } from '../screens/main/OnboardingScreen';
 import { hasSeenOnboarding } from '../services/douceur';
 import { Colors } from '../theme';
@@ -120,6 +162,48 @@ export type MainStackParamList = {
   Boutique: undefined;
   Ensemble: undefined;
   Agenda: undefined;
+  MesRevenus: undefined;
+  MesRecus: undefined;
+  PremiumCreateur: undefined;
+  SuggestionPrix: undefined;
+  ReformulerOffre: undefined;
+  BoosterProfil: undefined;
+  GagnerSurShalify: undefined;
+  VivreEtVendre: undefined;
+  Feed: undefined;
+  Stories: undefined;
+  Communaute: undefined;
+  SalonVocal: undefined;
+  CercleAudio: undefined;
+  MicroLive: undefined;
+  Ambassadeurs: undefined;
+  Mentorat: undefined;
+  Equipes: undefined;
+  Annee2026: undefined;
+  LettreAuFutur: undefined;
+  VisionBoard: undefined;
+  MurIntentions: undefined;
+  MiroirDuJour: undefined;
+  MeteoInterieure: undefined;
+  Numerologie: undefined;
+  VibrationPrenom: undefined;
+  Chronotype: undefined;
+  BoussoleValeurs: undefined;
+  VoyageInterieur: undefined;
+  Refuge: undefined;
+  AutoHypnose: undefined;
+  JournalVocal: undefined;
+  ShalifyConnect: undefined;
+  ResonanceProfonde: undefined;
+  BriseGlace: undefined;
+  Duo21Jours: undefined;
+  DuoAncrage: undefined;
+  GratitudeADeux: undefined;
+  Faq: undefined;
+  Contact: undefined;
+  PlanDuSite: undefined;
+  CommentCaMarche: undefined;
+  PremiersPas: undefined;
 };
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -222,6 +306,48 @@ export function MainTabs() {
       <MainStack.Screen name="Boutique" component={BoutiqueScreen} options={detailOptions} />
       <MainStack.Screen name="Ensemble" component={EnsembleScreen} options={detailOptions} />
       <MainStack.Screen name="Agenda" component={AgendaScreen} options={detailOptions} />
+      <MainStack.Screen name="MesRevenus" component={MesRevenusScreen} options={detailOptions} />
+      <MainStack.Screen name="MesRecus" component={MesRecusScreen} options={detailOptions} />
+      <MainStack.Screen name="PremiumCreateur" component={PremiumCreateurScreen} options={detailOptions} />
+      <MainStack.Screen name="SuggestionPrix" component={SuggestionPrixScreen} options={detailOptions} />
+      <MainStack.Screen name="ReformulerOffre" component={ReformulerOffreScreen} options={detailOptions} />
+      <MainStack.Screen name="BoosterProfil" component={BoosterProfilScreen} options={detailOptions} />
+      <MainStack.Screen name="GagnerSurShalify" component={GagnerSurShalifyScreen} options={detailOptions} />
+      <MainStack.Screen name="VivreEtVendre" component={VivreEtVendreScreen} options={detailOptions} />
+      <MainStack.Screen name="Feed" component={FeedScreen} options={detailOptions} />
+      <MainStack.Screen name="Stories" component={StoriesScreen} options={detailOptions} />
+      <MainStack.Screen name="Communaute" component={CommunauteScreen} options={detailOptions} />
+      <MainStack.Screen name="SalonVocal" component={SalonVocalScreen} options={detailOptions} />
+      <MainStack.Screen name="CercleAudio" component={CercleAudioScreen} options={detailOptions} />
+      <MainStack.Screen name="MicroLive" component={MicroLiveScreen} options={detailOptions} />
+      <MainStack.Screen name="Ambassadeurs" component={AmbassadeursScreen} options={detailOptions} />
+      <MainStack.Screen name="Mentorat" component={MentoratScreen} options={detailOptions} />
+      <MainStack.Screen name="Equipes" component={EquipesScreen} options={detailOptions} />
+      <MainStack.Screen name="Annee2026" component={Annee2026Screen} options={detailOptions} />
+      <MainStack.Screen name="LettreAuFutur" component={LettreAuFuturScreen} options={detailOptions} />
+      <MainStack.Screen name="VisionBoard" component={VisionBoardScreen} options={detailOptions} />
+      <MainStack.Screen name="MurIntentions" component={MurIntentionsScreen} options={detailOptions} />
+      <MainStack.Screen name="MiroirDuJour" component={MiroirDuJourScreen} options={detailOptions} />
+      <MainStack.Screen name="MeteoInterieure" component={MeteoInterieureScreen} options={detailOptions} />
+      <MainStack.Screen name="Numerologie" component={NumerologieScreen} options={detailOptions} />
+      <MainStack.Screen name="VibrationPrenom" component={VibrationPrenomScreen} options={detailOptions} />
+      <MainStack.Screen name="Chronotype" component={ChronotypeScreen} options={detailOptions} />
+      <MainStack.Screen name="BoussoleValeurs" component={BoussoleValeursScreen} options={detailOptions} />
+      <MainStack.Screen name="VoyageInterieur" component={VoyageInterieurScreen} options={detailOptions} />
+      <MainStack.Screen name="Refuge" component={RefugeScreen} options={detailOptions} />
+      <MainStack.Screen name="AutoHypnose" component={AutoHypnoseScreen} options={detailOptions} />
+      <MainStack.Screen name="JournalVocal" component={JournalVocalScreen} options={detailOptions} />
+      <MainStack.Screen name="ShalifyConnect" component={ShalifyConnectScreen} options={detailOptions} />
+      <MainStack.Screen name="ResonanceProfonde" component={ResonanceProfondeScreen} options={detailOptions} />
+      <MainStack.Screen name="BriseGlace" component={BriseGlaceScreen} options={detailOptions} />
+      <MainStack.Screen name="Duo21Jours" component={Duo21JoursScreen} options={detailOptions} />
+      <MainStack.Screen name="DuoAncrage" component={DuoAncrageScreen} options={detailOptions} />
+      <MainStack.Screen name="GratitudeADeux" component={GratitudeADeuxScreen} options={detailOptions} />
+      <MainStack.Screen name="Faq" component={FaqScreen} options={detailOptions} />
+      <MainStack.Screen name="Contact" component={ContactScreen} options={detailOptions} />
+      <MainStack.Screen name="PlanDuSite" component={PlanDuSiteScreen} options={detailOptions} />
+      <MainStack.Screen name="CommentCaMarche" component={CommentCaMarcheScreen} options={detailOptions} />
+      <MainStack.Screen name="PremiersPas" component={PremiersPasScreen} options={detailOptions} />
     </MainStack.Navigator>
   );
 }
