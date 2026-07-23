@@ -31,6 +31,13 @@ export const ar = {
   signup_cta: 'إنشاء مساحتي',
   signup_connexion: 'تسجيل الدخول',
   signup_prenom_ph: 'اسمك الأول',
+  signup_password: 'كلمة المرور',
+  signup_password_ph: '8 أحرف على الأقل',
+  signup_confirm: 'تأكيد كلمة المرور',
+  signup_confirm_ph: 'أدخلها مرة أخرى',
+  signup_password_ok: '✓ كلمة المرور طويلة بما يكفي',
+  signup_password_error: 'اختر كلمة مرور من 8 أحرف على الأقل.',
+  signup_confirm_error: 'يجب أن تتطابق كلمتا المرور.',
 
   forgot_titre: 'نسيت كلمة المرور',
   forgot_sous_titre: 'أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين',

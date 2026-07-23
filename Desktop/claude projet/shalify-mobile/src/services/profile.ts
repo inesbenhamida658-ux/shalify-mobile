@@ -66,12 +66,14 @@ export async function setEditToken(token: string): Promise<void> {
 }
 
 // Récupère la fiche de la personne connectée (par identifiant de fiche ou email).
-export async function getMyProfile(email: string, profilId?: string): Promise<EditableProfile> {
+export async function getMyProfile(email: string, profilId?: string, token?: string): Promise<EditableProfile> {
   const base = emptyProfile(email);
   try {
-    const data = await apiGet<{ profils?: RawProfil[] }>('/api/profils');
-    const list = data.profils ?? [];
-    const mine = list.find(p =>
+    const data: { profil?: RawProfil | null; profils?: RawProfil[] } = token
+      ? await apiGet<{ profil?: RawProfil | null }>('/api/profils?mine=1', token)
+      : await apiGet<{ profils?: RawProfil[] }>('/api/profils');
+    const list: RawProfil[] = data.profils ?? (data.profil ? [data.profil] : []);
+    const mine = list.find((p: RawProfil) =>
       (profilId && p.id === profilId) ||
       (p.email ?? '').toLowerCase() === email.toLowerCase(),
     );
@@ -87,7 +89,7 @@ export async function getMyProfile(email: string, profilId?: string): Promise<Ed
       ville: repairText(mine.ville ?? ''),
       pays: repairText(mine.pays ?? ''),
       photoUrl: mine.photoUrl ?? mine.avatar ?? '',
-      services: (mine.services ?? []).map(s => ({
+      services: (mine.services ?? []).map((s: RawService) => ({
         titre: repairText(s.titre ?? s.nom ?? ''),
         description: repairText(s.description ?? ''),
         duree: s.duree ?? '',
@@ -104,6 +106,7 @@ export async function getMyProfile(email: string, profilId?: string): Promise<Ed
 export async function saveMyProfile(
   profile: EditableProfile,
   editToken: string,
+  token?: string,
 ): Promise<{ success: boolean }> {
   const services = profile.services
     .filter(s => s.titre.trim())
@@ -127,5 +130,5 @@ export async function saveMyProfile(
     services,
   };
   await setEditToken(editToken);
-  return apiPut<{ success: boolean }>('/api/profils', body);
+  return apiPut<{ success: boolean }>('/api/profils', body, token);
 }

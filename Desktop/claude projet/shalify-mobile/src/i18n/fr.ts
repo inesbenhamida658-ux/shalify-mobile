@@ -34,6 +34,13 @@ export const fr = {
   signup_cta: 'Créer mon espace',
   signup_connexion: 'Se connecter',
   signup_prenom_ph: 'Votre prénom',
+  signup_password: 'Mot de passe',
+  signup_password_ph: '8 caractères minimum',
+  signup_confirm: 'Confirmer le mot de passe',
+  signup_confirm_ph: 'Saisissez-le une seconde fois',
+  signup_password_ok: '✓ Mot de passe assez long',
+  signup_password_error: 'Choisissez un mot de passe d’au moins 8 caractères.',
+  signup_confirm_error: 'Les deux mots de passe doivent être identiques.',
 
   // Mot de passe oublié
   forgot_titre: 'Mot de passe oublié',

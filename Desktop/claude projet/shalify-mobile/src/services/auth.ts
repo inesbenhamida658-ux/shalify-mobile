@@ -59,6 +59,19 @@ export async function loginWithPassword(email: string, password: string): Promis
   return { token: res.token, user: buildUser(email, res) };
 }
 
+// Inscription complète : mot de passe choisi dès le départ et session ouverte.
+export async function registerWithPassword(prenom: string, email: string, password: string): Promise<{ token: string; user: User }> {
+  const res = await apiPost<AuthResponse>('/api/auth/register', {
+    prenom,
+    email,
+    password,
+    role: 'client',
+    pays: '',
+    consentAccepte: true,
+  });
+  return { token: res.token, user: buildUser(email, res) };
+}
+
 // Récupérer l'utilisateur courant
 export async function getMe(token: string): Promise<{ user: User | null }> {
   return apiGet('/api/auth/me', token);

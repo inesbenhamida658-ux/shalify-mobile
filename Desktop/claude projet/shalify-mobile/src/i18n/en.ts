@@ -31,6 +31,13 @@ export const en = {
   signup_cta: 'Create my space',
   signup_connexion: 'Sign in',
   signup_prenom_ph: 'Your first name',
+  signup_password: 'Password',
+  signup_password_ph: 'At least 8 characters',
+  signup_confirm: 'Confirm password',
+  signup_confirm_ph: 'Enter it again',
+  signup_password_ok: '✓ Password is long enough',
+  signup_password_error: 'Choose a password of at least 8 characters.',
+  signup_confirm_error: 'The two passwords must match.',
 
   forgot_titre: 'Forgot password',
   forgot_sous_titre: 'Enter your email to receive a reset link',

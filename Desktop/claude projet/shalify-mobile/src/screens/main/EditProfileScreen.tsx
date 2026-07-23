@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 export function EditProfileScreen() {
   const { t, lang } = useLang();
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const navigation = useNavigation<any>();
 
   const [profile, setProfile] = useState<EditableProfile>(emptyProfile(user?.email ?? ''));
@@ -41,14 +41,14 @@ export function EditProfileScreen() {
     let alive = true;
     (async () => {
       const email = user?.email ?? '';
-      const [p, tok] = await Promise.all([getMyProfile(email, user?.id), getEditToken()]);
+      const [p, tok] = await Promise.all([getMyProfile(email, user?.id, token || undefined), getEditToken()]);
       if (!alive) return;
       setProfile(p);
       setEditTokenState(tok);
       setLoading(false);
     })();
     return () => { alive = false; };
-  }, [user?.email, user?.id]);
+  }, [user?.email, user?.id, token]);
 
   const set = <K extends keyof EditableProfile>(key: K, value: EditableProfile[K]) =>
     setProfile(prev => ({ ...prev, [key]: value }));
@@ -78,7 +78,7 @@ export function EditProfileScreen() {
       Alert.alert(t('edit_profil_titre'), t('edit_profil_requis'));
       return;
     }
-    if (!editToken.trim()) {
+    if (!token && !editToken.trim()) {
       setTokenError(true);
       Alert.alert(t('edit_profil_titre'), t('edit_profil_code_requis'));
       return;
@@ -86,7 +86,7 @@ export function EditProfileScreen() {
     setSaving(true);
     setTokenError(false);
     try {
-      await saveMyProfile(profile, editToken);
+      await saveMyProfile(profile, editToken, token || undefined);
       Alert.alert(t('edit_profil_titre'), t('edit_profil_ok'), [
         { text: 'OK', onPress: () => navigation.goBack() },
       ]);
